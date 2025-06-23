@@ -1,0 +1,531 @@
+openapi: '3.0.0'
+info:
+    version: '1.0.0'
+    title: 'Workgroup Assistant API'
+    description: Workgroup assistant microservice in Researcher Hub
+servers:
+    - url: https://{domainasia}.nudgeresearcherhub.com/{version}
+      description: Asian clients run on Huawei Cloud server
+      variables:
+        domainasia:
+            default: asia
+            description: Server name for Asia domain
+        version:
+            default: v1
+            description: Microservice version for Asia domain
+    - url: https://{domainanz}.nudgeresearcherhub.com/{version}
+      description: Australian and NZ client run on Microsoft Azure Cloud server
+      variables:
+        domainanz:
+            default: anz
+            description: Server name for Aus and NZ domain
+        version:
+            default: v1
+            description: Microservice version for Aus and NZ domain
+    - url: https://{domainus}.nudgeresearcherhub.com/{version}
+      description:  North American clients run on Microsoft Azure Cloud server
+      variables:
+        domainus:
+            default: america
+            description: Server name fo US and Canada domain
+        version:
+            default: v1
+            description: Microservice version for North American domain
+paths:
+    /gss/load-signup:
+        post:
+            summary: Load sign-up application payload as group member for new AI service agent
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/UserSignup'
+            security:
+                - defaultApiKey: []
+            responses:
+                '200':
+                    description: The sign-up payload for workgroup member
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/SignupApplication'
+                '404':
+                    description: No sign-up payload found for workgroup member
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                '500':
+                    description: Internal error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                '400':
+                    description: Unexpected error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+    /gss/execute-signup:
+        post:
+            summary: Commit a new sign-up application payload for group member with new AI service agent onto Researcher Hub
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/SignupApplication'
+            security:
+                - defaultApiKey: []
+            responses:
+                '200':
+                    description: The credential of group member with existing AI service agent
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Message'
+                '404':
+                    description: No resource found for user credential
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                '500':
+                    description: Internal error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                '400':
+                    description: Unexpected error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+    /gss/load-login:
+        post:
+            summary: Load login payload as group member for existing AI service agent
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/UserCredential'
+            security:
+                - defaultApiKey: []
+            responses:
+                '200':
+                    description: The login payload for workgroup member
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/LoginForm'
+                '404':
+                    description: No login payload found for workgroup member
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                '500':
+                    description: Internal error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                '400':
+                    description: Unexpected error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+    /gss/execute-login:
+        post:
+            summary: Submit a login with user credential payload for group member with existing AI service agent
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/LoginForm'
+            security:
+                - defaultApiKey: []
+            responses:
+                '200':
+                    description: The workgroup and member's profile on Researcher Hub
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schema/Message'
+                '404':
+                    description: No resource found for workgroup and member's profile on Researcher Hub
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                '500':
+                    description: Internal error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                '400':
+                    description: Unexpected error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+    /gss/load-workgroup:
+        post:
+            summary: Get workgroup for AI service agent
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/GroupByUserAndApp'
+            security:
+                - defaultApiKey: []
+            responses:
+                '200':
+                    description: The workgroup payload for workgroup members
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schema/Workgroup'
+                '404':
+                    description: No resource found for workgroup on Researcher Hub
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                '500':
+                    description: Internal error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                '400':
+                    description: Unexpected error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error' 
+    /gss/load-members-profile:
+        post:
+            summary: Get member's profile and voting preferences of AI service agent
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/IndividualMemberByUser'
+            security:
+                - defaultApiKey: []
+            responses:
+                '200':
+                    description: An individual member's payload 
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schema/IndividualMember'
+                '404':
+                    description: No resource found for individual member on Researcher Hub
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                '500':
+                    description: Internal error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                '400':
+                    description: Unexpected error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'  
+    /gss/execute-logout:
+        post:
+            summary: Load logout payload as group member for existing AI service agent
+            responses:
+                '200':
+                    description: Success message to logout from Researcher Hub
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schema/Message'
+                '404':
+                    description: No resource found for logout from Researcher Hub
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                '500':
+                    description: Internal error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                '400':
+                    description: Unexpected error
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'    
+components:
+    schemas:
+        UserId:
+            type: integer
+            format: int32
+            minimum: 0
+            maximum: 5000000
+        GroupObject:
+            description: A member of a workgroup in Researcher Hub
+            type: object
+            required:
+                - id
+                - avatar
+                - name
+                - slackname
+                - researchergate
+                - role
+                - groupinfluence
+            properties:
+                id:
+                    $ref: '#/components/schemas/UserId'
+                avatar:
+                    type: string
+                    enum:
+                        - robotPurple.png
+                        - robotGreen.png
+                        - robotOrange.png
+                        - robotRed.png
+                name:
+                    type: string
+                    maxLength: 256
+                slackname:
+                    type: string
+                    maxLength: 256
+                researchergate:
+                    type: string
+                    maxLength: 256
+                role:
+                    type: string
+                    enum:
+                        - Leader
+                        - Assistant
+                groupinfluence:
+                    type: integer
+                    format: int32
+                    minimum: 1
+                    maximum: 5
+        GroupConversation:
+            description: A conversation from a workgroup 
+            type: object
+            required:
+                - message
+                - sender
+                - timestamp
+            properties:
+                message:
+                    type: string
+                    maxLength: 1000
+                sender:
+                    type: string
+                    maxLength: 256
+                timestamp:
+                    type: string
+                    maxLength: 256
+        UserSignup:
+            description: A new or existing workgroup member object for Research Hub sign-up
+            type: object
+            required:
+                - id
+            properties:
+                id:
+                    $ref: '#/components/schemas/UserId'
+                inviteremail:
+                    type: string
+                    format: email
+        SignupApplication:
+            description: A sign-up application payload for Researcher Hub
+            type: object
+            required:
+                - avatar
+                - name
+                - email
+                - password
+                - slackname
+                - researchergate
+                - defaultAppID
+                - defaultAppDescription
+            properties:
+                avatar:
+                    type: string
+                    enum:
+                        - robotPurple.png
+                        - robotGreen.png
+                        - robotOrange.png
+                        - robotRed.png
+                name:
+                    type: string
+                    maxLength: 256
+                email:
+                    type: string
+                    format: email
+                password:
+                    type: string
+                    maxLength: 256
+                slackname:
+                    type: string
+                    maxLength: 256
+                researchergate:
+                    type: string
+                    maxLength: 256
+                defaultAppID:
+                    type: string
+                    maxLength: 500
+                defaultAppDescription:
+                    type: string
+                    maxLength: 500
+        UserCredential:
+            description: A user credential payload for Researcher Hub sign-up
+            type: object
+            required:
+                - id
+            properties:
+                id:
+                    $ref: '#/components/schemas/UserId'
+                inviteremail:
+                    type: string
+                    format: email
+                inviterDefaultAppId:
+                    type: string
+                    maxLength: 500
+                inviterUserRole:
+                    type: string
+                    enum:
+                        - Leader
+                        - Assistant
+        LoginForm:
+            description: A login form payload for Researcher Hub
+            type: object
+            required:
+                - name
+                - password
+            properties:
+                name: 
+                    type: string
+                    maxLength: 256
+                password:
+                    type: string
+                    maxLength: 256
+                inviterDefaultAppId:
+                    type: string
+                    maxLength: 500
+                inviterUserRole:
+                    type: string
+                    enum:
+                        - Leader
+                        - Assistant
+        GroupByUserAndApp:
+            description: A workgroup payload using user id and app id in Researcher Hub
+            type: object
+            required:
+                - id
+                - defaultAppID
+            properties:
+                id:
+                    $ref: '#/components/schemas/UserId'
+                defaultAppID:
+                    type: string
+                    maxLength: 500
+        Workgroup:
+            description: A workgroup payload for Researcher Hub
+            type: object
+            required:
+                - members
+            properties:
+                members:
+                    type: array
+                    minItems: 1
+                    items:
+                        $ref: '#/components/schemas/GroupObject'
+                conversation:
+                    type: array
+                    minItems: 1
+                    items:
+                        $ref: '#/components/schemas/GroupConversation'        
+        IndividualMemberByUser:
+            description: An individual member's payload using user id in Researcher Hub
+            type: object
+            required:
+                - id
+            properties:
+                id:
+                    $ref: '#/components/schemas/UserId'
+        IndividualMember:
+            description: An individual member's payload contain account details for Researcher Hub
+            type: object
+            required:
+                - name
+                - email
+                - slackname
+                - researchergate
+                - avatar
+                - defaultAppID
+            properties:
+                name:
+                    type: string
+                    maxLength: 256
+                email:
+                    type: string
+                    format: email
+                slackname:
+                    type: string
+                    maxLength: 256
+                researchergate:
+                    type: string
+                    maxLength: 256
+                avatar:
+                    type: string
+                    enum:
+                        - robotPurple.png
+                        - robotGreen.png
+                        - robotOrange.png
+                        - robotRed.png
+                defaultAppID:
+                    type: string
+                    maxLength: 500
+        Message:
+            type: object
+            required:
+                - message
+            properties:
+                message:
+                    description: A human readable system message
+                    type: string
+        Error:
+            type: object
+            required:
+                - error
+            properties:
+                error:
+                    description: A human readable error message
+                    type: string
+    securitySchemes:
+        defaultApiKey:
+            description: Default API Key
+            type: apiKey
+            in: header
+            name: X-Api-Key
+        basicHttpAuthentication:
+            description: Basic HTTP Authentication
+            type: http
+            scheme: Basic
+security:
+  - defaultApiKey: []
