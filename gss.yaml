@@ -32,7 +32,7 @@ servers:
             default: v1
             description: Microservice version for North American domain
 paths:
-    /gss/load-signup:
+    "/gss/load-signup":
         post:
             summary: Load sign-up application payload as group member for new AI service agent
             parameters:
@@ -107,7 +107,7 @@ paths:
                             examples:
                                 Error400Status:
                                     $ref: '#/components/examples/Error400Status'
-    /gss/execute-signup:
+    "/gss/execute-signup":
         post:
             summary: Commit a new sign-up application payload for group member with new AI service agent onto Researcher Hub
             parameters:
@@ -219,7 +219,7 @@ paths:
                             examples:
                                 Error400Status:
                                     $ref: "#/components/examples/Error400Status"
-    /gss/load-login:
+    "/gss/load-login":
         post:
             summary: Load login payload as group member for existing AI service agent
             parameters:
@@ -307,7 +307,7 @@ paths:
                             examples:
                                 Error400Status: 
                                     $ref: "#/components/examples/Error400Status"
-    /gss/execute-login:
+    "/gss/execute-login":
         post:
             summary: Submit a login with user credential payload for group member with existing AI service agent
             parameters:
@@ -393,7 +393,7 @@ paths:
                             examples:
                                 Error400Status:
                                     $ref: "#/components/examples/Error400Status"           
-    /gss/load-workgroup:
+    "/gss/load-workgroup":
         post:
             summary: Get workgroup for AI service agent
             parameters:
@@ -467,7 +467,7 @@ paths:
                             examples:
                                 Error400Status:
                                     $ref: '#/components/examples/Error400Status'
-    /gss/load-members-profile:
+    "/gss/load-members-profile":
         post:
             summary: Get member's profile and voting preferences of AI service agent
             parameters:
@@ -536,7 +536,7 @@ paths:
                             examples:
                                 Error400Status:
                                     $ref: '#/components/examples/Error400Status'
-    /gss/execute-logout:
+    "/gss/execute-logout":
         post:
             summary: Load logout payload as group member for existing AI service agent
             responses:
