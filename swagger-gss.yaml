@@ -1,0 +1,923 @@
+swagger: '2.0.0'
+info:
+    version: '1.1.0'
+    title: 'Workgroup Assistant API'
+    description: Workgroup assistant microservice in Researcher Hub
+servers:
+    - url: https://{domainasia}.nudgeresearcherhub.com/{version}/gss
+      description: Asian clients run on Huawei Cloud server
+      variables:
+        domainasia:
+            default: asia
+            description: Server name for Asia domain
+        version:
+            default: v1
+            description: Microservice version for Asia domain
+    - url: https://{domainanz}.nudgeresearcherhub.com/{version}/gss
+      description: Australian and NZ client run on Microsoft Azure Cloud server
+      variables:
+        domainanz:
+            default: anz
+            description: Server name for Aus and NZ domain
+        version:
+            default: v1
+            description: Microservice version for Aus and NZ domain
+    - url: https://{domainus}.nudgeresearcherhub.com/{version}/gss
+      description:  North American clients run on Microsoft Azure Cloud server
+      variables:
+        domainus:
+            default: america
+            description: Server name fo US and Canada domain
+        version:
+            default: v1
+            description: Microservice version for North American domain
+paths:
+    "/load-signup":
+        post:
+            summary: Load sign-up application payload as group member for new AI service agent
+            parameters:
+                - name: id
+                  in: header
+                  required: true
+                  type: integer
+                  format: int32
+                  minimum: 0
+                  maximum: 5000000
+                - name: inviteremail
+                  in: header
+                  required: false
+                  type: string
+                  format: email
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/UserSignup'
+                        examples:
+                            exampleSignup:
+                                $ref: '#/components/examples/exampleSignup'
+            security:
+                - defaultApiKey: []
+            responses:
+                '200':
+                    description: > 
+                        The sign-up payload for workgroup members. The signup payload is returned which includes
+                        avatar, name, email, password, slackname, researchgate url, default app id,
+                        and default app description. A status code 200 is returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/SignupApplication'
+                            examples:
+                                Message200Signup:
+                                    $ref: "#/components/examples/Message200Signup"
+                '404':
+                    description: > 
+                        No sign-up payload found for workgroup member. Error message with 
+                        status code 404 is returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error404Status:
+                                    $ref: "#/components/examples/Error404Status"
+                '500':
+                    description: >
+                        Internal error occured. Error message with status code 
+                        500 is returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error500Status:
+                                    $ref: "#/components/examples/Error500Status"
+                '400':
+                    description: > 
+                        Unexpected error occured. Error message with status code 400
+                        is returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error400Status:
+                                    $ref: '#/components/examples/Error400Status'
+    "/execute-signup":
+        post:
+            summary: Commit a new sign-up application payload for group member with new AI service agent onto Researcher Hub
+            parameters:
+                - name: avatar
+                  in: header
+                  required: true
+                  type: string
+                  enum:
+                    - robotPurple.png
+                    - robotGreen.png
+                    - robotOrange.png
+                    - robotRed.png
+                - name: name
+                  in: header
+                  required: true
+                  type: string
+                  maxLength: 256
+                - name: email
+                  in: header
+                  required: true
+                  type: string
+                  format: email
+                - name: password
+                  in: header
+                  required: true
+                  type: string
+                  maxLength: 256
+                - name: slackname
+                  in: header
+                  required: true
+                  type: string
+                  maxLength: 256
+                - name: researchgate
+                  in: header
+                  required: true
+                  type: string
+                  maxLength: 256
+                - name: defaultAppID
+                  in: header
+                  required: true
+                  type: string
+                  maxLength: 500
+                - name: defaultAppDescription
+                  in: header
+                  required: true
+                  type: string
+                  maxLength: 500
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/SignupApplication'
+                        examples:
+                            exampleSignupApplication:
+                                $ref: '#/components/examples/exampleSignupApplication'
+            security:
+                - defaultApiKey: []
+            responses:
+                '200':
+                    description: > 
+                        The credential of group member with existing AI service agent. A standard OK message with 
+                        status code 200 is return.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Message'
+                            examples:
+                                Message200Status:
+                                    $ref: "#/components/examples/Message200Status"
+                '404':
+                    description: > 
+                        No resource found for user credential. Error message with status code 
+                        404 is returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error404Status:
+                                    $ref: "#/components/examples/Error404Status"
+                '500':
+                    description: > 
+                        Internal error occured. Error message with status code
+                        500 is returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error500Status:
+                                    $ref: "#/components/examples/Error500Status"
+                '400':
+                    description: > 
+                        Unexpected error occured. Error message with status code 
+                        400 is returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error400Status:
+                                    $ref: "#/components/examples/Error400Status"
+    "/load-login":
+        post:
+            summary: Load login payload as group member for existing AI service agent
+            parameters:
+                - name: id
+                  in: header
+                  required: true
+                  type: integer
+                  format: int32
+                  minimum: 0
+                  maximum: 5000000
+                - name: inviteremail
+                  in: header
+                  required: false
+                  type: string
+                  format: email
+                - name: inviterDefaultAppId
+                  in: header
+                  required: false
+                  type: string
+                  maxLength: 500
+                - name: inviterUserRole
+                  in: header
+                  required: false
+                  type: string
+                  enum:
+                    - Leader
+                    - Assistant
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/UserCredential'
+                        examples:
+                            exampleUserCredential:
+                                $ref: '#/components/examples/exampleUserCredential'
+            security:
+                - defaultApiKey: []
+            responses:
+                '200':
+                    description: >
+                        The login payload for workgroup member. A login payload is returned include with
+                        username and password. A status code 200 is also returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/LoginForm'
+                            examples:
+                                Message200Login: 
+                                    $ref: "#/components/examples/Message200Login"
+                '404':
+                    description: > 
+                        No login payload found for workgroup member. Error message with status code
+                        404 is returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error404Status: 
+                                    $ref: "#/components/examples/Error404Status"
+                '500':
+                    description: > 
+                        Internal error occured. Error message with status code 500
+                        is returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error500Status: 
+                                    $ref: "#/components/examples/Error500Status"
+                '400':
+                    description: > 
+                        Unexpected error occured. Error message with status code 
+                        400 is returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error400Status: 
+                                    $ref: "#/components/examples/Error400Status"
+    "/execute-login":
+        post:
+            summary: Submit a login with user credential payload for group member with existing AI service agent
+            parameters:
+                - name: name
+                  in: header
+                  required: true
+                  type: string
+                  maxLength: 256
+                - name: password
+                  in: header
+                  required: true
+                  type: string
+                  maxLength: 256
+                - name: inviterDefaultAppId
+                  in: header
+                  required: false
+                  type: string
+                  maxLength: 500
+                - name: inviterUserRole
+                  in: header
+                  required: false
+                  type: string
+                  enum:
+                    - Leader
+                    - Assistant
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/LoginForm'
+                        examples:
+                            exampleUserLogin:
+                                $ref: '#/components/examples/exampleUserLogin'
+            security:
+                - defaultApiKey: []
+            responses:
+                '200':
+                    description: > 
+                        The workgroup and member's profile on Researcher Hub. A standard OK message is
+                        returned with a status code 200.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schema/Message'
+                            examples:
+                                Message200Status:
+                                    $ref: "#/components/examples/Message200Status"
+                '404':
+                    description: > 
+                        No resource found for workgroup and member's profile on Researcher Hub. Error
+                        message is returned with status code 404.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error404Status:
+                                    $ref: "#/components/examples/Error404Status"
+                '500':
+                    description: > 
+                        Internal error occured. Error message is returned with
+                        status code 500.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error500Status:
+                                    $ref: "#/components/examples/Error500Status"
+                '400':
+                    description: > 
+                        Unexpected error occured. Error message is returned with
+                        status code 400.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error400Status:
+                                    $ref: "#/components/examples/Error400Status"           
+    "/load-workgroup":
+        post:
+            summary: Get workgroup for AI service agent
+            parameters:
+                - name: id
+                  in: header
+                  required: true
+                  type: integer
+                  format: int32
+                  minimum: 0
+                  maximum: 5000000
+                - name: defaultAppID
+                  in: header
+                  required: true
+                  type: string
+                  maxLength: 500
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/GroupByUserAndApp'
+                        examples:
+                            exampleWorkgroup:
+                                $ref: '#/components/examples/exampleWorkgroup'
+            security:
+                - defaultApiKey: []
+            responses:
+                '200':
+                    description: > 
+                        The workgroup payload for workgroup members. A workgroup payload is returned 
+                        with list of group members, and conversation or chat history of workgroup.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schema/Workgroup'
+                            examples:
+                                Message200Workgroup:
+                                    $ref: '#/components/examples/Message200Workgroup'
+                '404':
+                    description: > 
+                        No resource found for workgroup on Researcher Hub. Error message with status
+                        code 404 is returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error404Status:
+                                    $ref: "#/components/examples/Error404Status"
+                '500':
+                    description: > 
+                        Internal error occured. Error message with status
+                        code 500 is returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error500Status:
+                                    $ref: '#/components/examples/Error500Status'
+                '400':
+                    description: > 
+                        Unexpected error occured. Error message with status code 400
+                        is returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error' 
+                            examples:
+                                Error400Status:
+                                    $ref: '#/components/examples/Error400Status'
+    "/load-members-profile":
+        post:
+            summary: Get member's profile and voting preferences of AI service agent
+            parameters:
+                - name: id
+                  in: header
+                  required: true
+                  type: integer
+                  format: int32
+                  minimum: 0
+                  maximum: 5000000
+            requestBody:
+                required: true
+                content:
+                    application/json:
+                        schema:
+                            $ref: '#/components/schemas/IndividualMemberByUser'
+                        examples:
+                            exampleMembers:
+                                $ref: '#/components/examples/exampleMembers'
+            security:
+                - defaultApiKey: []
+            responses:
+                '200':
+                    description: > 
+                        An individual member's payload. A workgroup member payload is returned
+                        with name, email, slackname, researchgate, avatar, and default app id. 
+                        A status code 200 is returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schema/IndividualMember'
+                            examples:
+                                Message200Member:
+                                    $ref: '#/components/examples/Message200Member'
+                '404':
+                    description: > 
+                        No resource found for individual member on Researcher Hub. Error message
+                        with status code 404 is returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error404Status:
+                                    $ref: '#/components/examples/Error404Status'
+                '500':
+                    description: > 
+                        Internal error occured. Error message with status code 500
+                        is returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error500Status:
+                                    $ref: '#/components/examples/Error500Status'
+                '400':
+                    description: > 
+                        Unexpected error occured. Error message with status code 400
+                        is returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error400Status:
+                                    $ref: '#/components/examples/Error400Status'
+    "/execute-logout":
+        post:
+            summary: Load logout payload as group member for existing AI service agent
+            responses:
+                '200':
+                    description: > 
+                        Success message to logout from Researcher Hub. A standard OK message 
+                        with a status code 200 is returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schema/Message'
+                            examples:
+                                Message200Status:
+                                    $ref: '#/components/examples/Message200Status'
+                '404':
+                    description: > 
+                        No HTTP resource found for user logout process from Researcher Hub.
+                        Error message with status code 404 is returned.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error404Status:
+                                    $ref: '#/components/examples/Error404Status'
+                '500':
+                    description: > 
+                        Error for internal error during user logout process. Error message
+                        is returned with status code 500.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error500Status:
+                                    $ref: '#/components/examples/Error500Status'
+                '400':
+                    description: >
+                        Error for unexpected error during user logout process. Error message
+                        is returned with status code 400.
+                    content:
+                        application/json:
+                            schema:
+                                $ref: '#/components/schemas/Error'
+                            examples:
+                                Error400Status:
+                                    $ref: '#/components/examples/Error400Status'
+components:
+    schemas:
+        UserId:
+            description: > 
+                A user identification for group member. This is an integer
+                type with min value of 0 and max value of 5000000.
+            type: integer
+            format: int32
+            minimum: 0
+            maximum: 5000000
+        GroupObject:
+            description: > 
+                A member of a workgroup in Researcher Hub. This is an object with 
+                properties for user id (type of UserId), avatar (type of string enumerator
+                with values robotPurple.png, robotGreen.png, robotOrange.png, and robotRed.png),
+                user name (type of string with max 256 characters), slackname (type of string
+                with max 256 characters), researchgate (type of string with max 256 
+                characters), user role (type of string enumerator with values of 
+                Leader and Assistant), and groupinfluence level (type of integer with min value 
+                of 1 and max value of 5).
+            type: object
+            required:
+                - id
+                - avatar
+                - name
+                - slackname
+                - researchgate
+                - role
+                - groupinfluence
+            properties:
+                id:
+                    $ref: '#/components/schemas/UserId'
+                avatar:
+                    type: string
+                    enum:
+                        - robotPurple.png
+                        - robotGreen.png
+                        - robotOrange.png
+                        - robotRed.png
+                name:
+                    type: string
+                    maxLength: 256
+                slackname:
+                    type: string
+                    maxLength: 256
+                researchgate:
+                    type: string
+                    maxLength: 256
+                role:
+                    type: string
+                    enum:
+                        - Leader
+                        - Assistant
+                groupinfluence:
+                    type: integer
+                    format: int32
+                    minimum: 1
+                    maximum: 5
+        GroupConversation:
+            description: > 
+                A conversation from a workgroup. An object that contains
+                properties for message (type of string with max 1000 characters),
+                sender (type of string with max 256 characters), and timestamp
+                (type of string with max 256 characters).
+            type: object
+            required:
+                - message
+                - sender
+                - timestamp
+            properties:
+                message:
+                    type: string
+                    maxLength: 1000
+                sender:
+                    type: string
+                    maxLength: 256
+                timestamp:
+                    type: string
+                    maxLength: 256
+        UserSignup:
+            description: > 
+                A new or existing workgroup member object for Research Hub sign-up.
+                This is an object type with required properties for user id (type of UserId),
+                and optional property for inviteremail (type of string with email format).
+            type: object
+            required:
+                - id
+            properties:
+                id:
+                    $ref: '#/components/schemas/UserId'
+                inviteremail:
+                    type: string
+                    format: email
+        SignupApplication:
+            description: > 
+                A sign-up application payload for Researcher Hub. This is a object type with 
+                required properties for avatar image (type of string enumerator with values robotPurple.png,
+                robotGreen.png, robotOrange.png, robotRed.png), name (type of string with max 256
+                characters), email address (type of string with email format), password (type of string
+                with max 256 characters), slackname (type of string with max 256 characters), 
+                researchgate url (type of string with 256 characters), defaultAppID (type of 
+                string with max 256 characters), and defaultAppDescription (type of string
+                with max 500 characters).
+            type: object
+            required:
+                - avatar
+                - name
+                - email
+                - password
+                - slackname
+                - researchgate
+                - defaultAppID
+                - defaultAppDescription
+            properties:
+                avatar:
+                    type: string
+                    enum:
+                        - robotPurple.png
+                        - robotGreen.png
+                        - robotOrange.png
+                        - robotRed.png
+                name:
+                    type: string
+                    maxLength: 256
+                email:
+                    type: string
+                    format: email
+                password:
+                    type: string
+                    maxLength: 256
+                slackname:
+                    type: string
+                    maxLength: 256
+                researchgate:
+                    type: string
+                    maxLength: 256
+                defaultAppID:
+                    type: string
+                    maxLength: 500
+                defaultAppDescription:
+                    type: string
+                    maxLength: 500
+        UserCredential:
+            description: > 
+                A user credential payload for Researcher Hub sign-up. This is a object
+                that contains required properties for user id (type of UserId). Also,
+                optional properties for inviteremail (type of string with email format),
+                inviterDefaultAppId (type of string with max 500 characters), and 
+                inviterUserRole (type of string enumerator with values of Leader and Assistant).
+            type: object
+            required:
+                - id
+            properties:
+                id:
+                    $ref: '#/components/schemas/UserId'
+                inviteremail:
+                    type: string
+                    format: email
+                inviterDefaultAppId:
+                    type: string
+                    maxLength: 500
+                inviterUserRole:
+                    type: string
+                    enum:
+                        - Leader
+                        - Assistant
+        LoginForm:
+            description: > 
+                A login form payload for Researcher Hub. A object with required properties for 
+                user name (type of string with max 256 characters), and password (type of string
+                with max 256 characters). Also, optional properties such as inviterDefaultAppId 
+                (type of string with max of 500 characters), and inviterUserRole (type of string 
+                enumerator with values of Leader and Assistant).
+            type: object
+            required:
+                - name
+                - password
+            properties:
+                name: 
+                    type: string
+                    maxLength: 256
+                password:
+                    type: string
+                    maxLength: 256
+                inviterDefaultAppId:
+                    type: string
+                    maxLength: 500
+                inviterUserRole:
+                    type: string
+                    enum:
+                        - Leader
+                        - Assistant
+        GroupByUserAndApp:
+            description: > 
+                A workgroup payload using user id and app id in Researcher Hub. This a 
+                type of object that has properties for user id (type of UserID), and 
+                defaultAppID (type of string with max 500 characters).
+            type: object
+            required:
+                - id
+                - defaultAppID
+            properties:
+                id:
+                    $ref: '#/components/schemas/UserId'
+                defaultAppID:
+                    type: string
+                    maxLength: 500
+        Workgroup:
+            description: > 
+                A workgroup payload for Researcher Hub. This is a object type with required properties
+                for members (type of array with GroupObjects = a type of group members). Included property 
+                is a conversation (type of array with GroupConversation = a type of conversation chat history).
+            type: object
+            required:
+                - members
+            properties:
+                members:
+                    type: array
+                    minItems: 1
+                    items:
+                        $ref: '#/components/schemas/GroupObject'
+                conversation:
+                    type: array
+                    minItems: 1
+                    items:
+                        $ref: '#/components/schemas/GroupConversation'        
+        IndividualMemberByUser:
+            description: > 
+                An individual member's payload using user id in Researcher Hub. This is an 
+                object type that contains the properties for user id (type of object).
+            type: object
+            required:
+                - id
+            properties:
+                id:
+                    $ref: '#/components/schemas/UserId'
+        IndividualMember:
+            description: > 
+                An individual member's payload contain account details for Researcher Hub.
+                It is object type that requires a name (type of string), email (type of email),
+                slackname (type of string with max 256 characters), researchgate url (type of string
+                with max 256 characters), avatar image file (type of string enumerator with values robotPurple.png,
+                robotGreen.png, robotOrange.png, robotRed.png), and defaultAppID (type of string with max
+                500 characters).
+            type: object
+            required:
+                - name
+                - email
+                - slackname
+                - researchgate
+                - avatar
+                - defaultAppID
+            properties:
+                name:
+                    type: string
+                    maxLength: 256
+                email:
+                    type: string
+                    format: email
+                slackname:
+                    type: string
+                    maxLength: 256
+                researchgate:
+                    type: string
+                    maxLength: 256
+                avatar:
+                    type: string
+                    enum:
+                        - robotPurple.png
+                        - robotGreen.png
+                        - robotOrange.png
+                        - robotRed.png
+                defaultAppID:
+                    type: string
+                    maxLength: 500
+        Message:
+            description: > 
+                A system message with content for end-user. 
+                This is an object type requiring a message
+                property of type string.
+            type: object
+            required:
+                - message
+            properties:
+                message:
+                    description: >
+                        A human readable system message of 
+                        type string.
+                    type: string
+        Error:
+            description: > 
+                A system error with information for end-user.
+                This is an object type requiring a error
+                property of type string.
+            type: object
+            required:
+                - error
+            properties:
+                error:
+                    description: > 
+                        A human readable error message of 
+                        type string.
+                    type: string
+    securitySchemes:
+        defaultApiKey:
+            description: Default API Key
+            type: apiKey
+            in: header
+            name: X-Api-Key
+        basicHttpAuthentication:
+            description: Basic HTTP Authentication
+            type: http
+            scheme: Basic
+    examples:
+        exampleMembers:
+            summary: Member payload for new agents
+            value: {"name": "John", "email": "john@email.com", "slackname": "johnslack", "researchgate": "https://researchgate.com/john", "avatar": "robotPurple.png", "defaultAppID": "JohnApp"}
+        exampleWorkgroup:
+            summary: Workgroup payload
+            value: {"id": 1, "defaultAppID": "JohnApp"} 
+        exampleUserLogin:
+            summary: Payload to login for new agents
+            value: {"name": "johnagent", "password": "passw0rd"}
+        exampleUserCredential:
+            summary: Login payload
+            value: {"id": 1}
+        exampleSignupApplication:
+            summary: Signup payload for new agents
+            value: {"avatar": "robotPurple.png", "name": "John", "email": "john@email.com", "password": "password", "slackname": "johnslack", "researchgate": "https://www.researchgate.com/john", "defaultAppID": "JohnApp", "defaultAppDescription": "This is John app"}
+        exampleSignup:
+            summary: Inital payload to signup
+            value: {"id": 1}
+        Message200Signup:
+            summary: 200 status code message for signup
+            value: {"avatar": "robotPurple.png", "name": "John", "email": "john@email.com", "password": "password", "slackname": "johnslack", "researchgate": "https://www.researchgate.com/john", "defaultAppID": "JohnApp", "defaultAppDescription": "This is John app"}
+        Message200Login:
+            summary: 200 status code message for login
+            value: {"name": "johnagent", "password": "passw0rd"}
+        Message200Workgroup:
+            summary: 200 status code message for workgroup
+            value: {"members": [{"id": 1, "avatar": "robotPurple.png", "name": "John", "slackname": "johnslack", "researchgate": "https://www.researchgate.com/john", "role": "Leader", "groupinfluence": 5},{"id": 2, "avatar": "robotRed.png", "name": "Jim", "slackname": "jimslack", "researchgate": "https://www.researchgate.com/jim", "role": "Assistant", "groupinfluence": 4}], "conversation": [{"message": "I need to find some agreement for this dataset", "sender": "John", "timestamp": "2019-08-24T14:15:22Z"}, {"message": "Ok np, I can take a look tomorrow", "sender": "Jim", "timestamp": "2019-08-24T14:15:22Z"}]}
+        Message200Member:
+            summary: 200 status code message for member
+            value: {"name": "John", "email": "john@email.com", "slackname": "johnslack", "researchgate": "https://researchgate.com/john", "avatar": "robotPurple.png", "defaultAppID": "JohnApp"}
+        Message200Status:
+            summary: Standard 200 status code message
+            value: {"message" : "OK"}
+        Error400Status:
+            summary: Unexpected error
+            value: {"error" : "Unexpected error occured. Contact the administator for support."}
+        Error500Status:
+            summary: Internal error
+            value: {"error" : "Internal error occured. Contact the administator for support."}
+        Error404Status:
+            summary: Resource not found
+            value: {"error" : "Resource cannot be found. Contact the administator for support."}
+security:
+  - defaultApiKey: []
