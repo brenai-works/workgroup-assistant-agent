@@ -4,7 +4,7 @@ info:
     title: 'Workgroup Assistant API'
     description: Workgroup assistant microservice in Researcher Hub
 servers:
-    - url: https://{domainasia}.nudgeresearcherhub.com/{version}
+    - url: https://{domainasia}.nudgeresearcherhub.com/{version}/gss
       description: Asian clients run on Huawei Cloud server
       variables:
         domainasia:
@@ -13,7 +13,7 @@ servers:
         version:
             default: v1
             description: Microservice version for Asia domain
-    - url: https://{domainanz}.nudgeresearcherhub.com/{version}
+    - url: https://{domainanz}.nudgeresearcherhub.com/{version}/gss
       description: Australian and NZ client run on Microsoft Azure Cloud server
       variables:
         domainanz:
@@ -22,7 +22,7 @@ servers:
         version:
             default: v1
             description: Microservice version for Aus and NZ domain
-    - url: https://{domainus}.nudgeresearcherhub.com/{version}
+    - url: https://{domainus}.nudgeresearcherhub.com/{version}/gss
       description:  North American clients run on Microsoft Azure Cloud server
       variables:
         domainus:
@@ -32,7 +32,7 @@ servers:
             default: v1
             description: Microservice version for North American domain
 paths:
-    "/gss/load-signup":
+     "/load-signup":
         post:
             summary: Load sign-up application payload as group member for new AI service agent
             parameters:
@@ -107,7 +107,7 @@ paths:
                             examples:
                                 Error400Status:
                                     $ref: '#/components/examples/Error400Status'
-    "/gss/execute-signup":
+     "/execute-signup":
         post:
             summary: Commit a new sign-up application payload for group member with new AI service agent onto Researcher Hub
             parameters:
@@ -219,7 +219,7 @@ paths:
                             examples:
                                 Error400Status:
                                     $ref: "#/components/examples/Error400Status"
-    "/gss/load-login":
+     "/load-login":
         post:
             summary: Load login payload as group member for existing AI service agent
             parameters:
@@ -307,7 +307,7 @@ paths:
                             examples:
                                 Error400Status: 
                                     $ref: "#/components/examples/Error400Status"
-    "/gss/execute-login":
+     "/execute-login":
         post:
             summary: Submit a login with user credential payload for group member with existing AI service agent
             parameters:
@@ -393,7 +393,7 @@ paths:
                             examples:
                                 Error400Status:
                                     $ref: "#/components/examples/Error400Status"           
-    "/gss/load-workgroup":
+     "/load-workgroup":
         post:
             summary: Get workgroup for AI service agent
             parameters:
@@ -467,7 +467,7 @@ paths:
                             examples:
                                 Error400Status:
                                     $ref: '#/components/examples/Error400Status'
-    "/gss/load-members-profile":
+     "/load-members-profile":
         post:
             summary: Get member's profile and voting preferences of AI service agent
             parameters:
@@ -536,7 +536,7 @@ paths:
                             examples:
                                 Error400Status:
                                     $ref: '#/components/examples/Error400Status'
-    "/gss/execute-logout":
+     "/execute-logout":
         post:
             summary: Load logout payload as group member for existing AI service agent
             responses:
