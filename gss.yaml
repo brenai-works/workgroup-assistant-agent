@@ -43,8 +43,7 @@ paths:
                             $ref: '#/components/schemas/UserSignup'
                         examples:
                             exampleSignup:
-                                summary: Inital payload to signup
-                                value: {"id": 1}
+                                $ref: '#/components/examples/exampleSignup'
             security:
                 - defaultApiKey: []
             responses:
@@ -104,8 +103,7 @@ paths:
                             $ref: '#/components/schemas/SignupApplication'
                         examples:
                             exampleSignupApplication:
-                                summary: Signup payload for new agents
-                                value: {"avatar": "robotPurple.png", "name": "John", "email": "john@email.com", "password": "password", "slackname": "johnslack", "researchgate": "https://www.researchgate.com/john", "defaultAppID": "JohnApp", "defaultAppDescription": "This is John app"}
+                                $ref: '#/components/examples/exampleSignupApplication'
             security:
                 - defaultApiKey: []
             responses:
@@ -164,8 +162,7 @@ paths:
                             $ref: '#/components/schemas/UserCredential'
                         examples:
                             exampleUserCredential:
-                                summary: Login payload
-                                value: {"id": 1}
+                                $ref: '#/components/examples/exampleUserCredential'
             security:
                 - defaultApiKey: []
             responses:
@@ -224,8 +221,7 @@ paths:
                             $ref: '#/components/schemas/LoginForm'
                         examples:
                             exampleUserLogin:
-                                summary: Payload to login for new agents
-                                value: {"name": "johnagent", "password": "passw0rd"}
+                                $ref: '#/components/examples/exampleUserLogin'
             security:
                 - defaultApiKey: []
             responses:
@@ -284,8 +280,7 @@ paths:
                             $ref: '#/components/schemas/GroupByUserAndApp'
                         examples:
                             exampleWorkgroup:
-                                summary: Workgroup payload
-                                value: {"id": 1, "defaultAppID": "JohnApp"} 
+                                $ref: '#/components/examples/exampleWorkgroup'
             security:
                 - defaultApiKey: []
             responses:
@@ -344,8 +339,7 @@ paths:
                             $ref: '#/components/schemas/IndividualMemberByUser'
                         examples:
                             exampleMembers:
-                                summary: Member payload for new agents
-                                value: {"name": "John", "email": "john@email.com", "slackname": "johnslack", "researchgate": "https://researchgate.com/john", "avatar": "robotPurple.png", "defaultAppID": "JohnApp"}
+                                $ref: '#/components/examples/exampleMembers'
             security:
                 - defaultApiKey: []
             responses:
@@ -756,6 +750,24 @@ components:
             type: http
             scheme: Basic
     examples:
+        exampleMembers:
+            summary: Member payload for new agents
+            value: {"name": "John", "email": "john@email.com", "slackname": "johnslack", "researchgate": "https://researchgate.com/john", "avatar": "robotPurple.png", "defaultAppID": "JohnApp"}
+        exampleWorkgroup:
+            summary: Workgroup payload
+            value: {"id": 1, "defaultAppID": "JohnApp"} 
+        exampleUserLogin:
+            summary: Payload to login for new agents
+            value: {"name": "johnagent", "password": "passw0rd"}
+        exampleUserCredential:
+            summary: Login payload
+            value: {"id": 1}
+        exampleSignupApplication:
+            summary: Signup payload for new agents
+            value: {"avatar": "robotPurple.png", "name": "John", "email": "john@email.com", "password": "password", "slackname": "johnslack", "researchgate": "https://www.researchgate.com/john", "defaultAppID": "JohnApp", "defaultAppDescription": "This is John app"}
+        exampleSignup:
+            summary: Inital payload to signup
+            value: {"id": 1}
         Message200Signup:
             summary: 200 status code message for signup
             value: {"avatar": "robotPurple.png", "name": "John", "email": "john@email.com", "password": "password", "slackname": "johnslack", "researchgate": "https://www.researchgate.com/john", "defaultAppID": "JohnApp", "defaultAppDescription": "This is John app"}
