@@ -39,17 +39,15 @@ paths:
                 - name: id
                   in: header
                   required: true
-                  schema:
-                    type: integer
-                    format: int32
-                    minimum: 0
-                    maximum: 5000000
+                  type: integer
+                  format: int32
+                  minimum: 0
+                  maximum: 5000000
                 - name: inviteremail
                   in: header
                   required: false
-                  schema:
-                    type: string
-                    format: email
+                  type: string
+                  format: email
             requestBody:
                 required: true
                 content:
@@ -114,55 +112,47 @@ paths:
                 - name: avatar
                   in: header
                   required: true
-                  schema:
-                    type: string
-                    enum:
-                        - robotPurple.png
-                        - robotGreen.png
-                        - robotOrange.png
-                        - robotRed.png
+                  type: string
+                  enum:
+                    - robotPurple.png
+                    - robotGreen.png
+                    - robotOrange.png
+                    - robotRed.png
                 - name: name
                   in: header
                   required: true
-                  schema:
-                    type: string
-                    maxLength: 256
+                  type: string
+                  maxLength: 256
                 - name: email
                   in: header
                   required: true
-                  schema:
-                    type: string
-                    format: email
+                  type: string
+                  format: email
                 - name: password
                   in: header
                   required: true
-                  schema:
-                    type: string
-                    maxLength: 256
+                  type: string
+                  maxLength: 256
                 - name: slackname
                   in: header
                   required: true
-                  schema:
-                    type: string
-                    maxLength: 256
+                  type: string
+                  maxLength: 256
                 - name: researchgate
                   in: header
                   required: true
-                  schema:
-                    type: string
-                    maxLength: 256
+                  type: string
+                  maxLength: 256
                 - name: defaultAppID
                   in: header
                   required: true
-                  schema:
-                    type: string
-                    maxLength: 500
+                  type: string
+                  maxLength: 500
                 - name: defaultAppDescription
                   in: header
                   required: true
-                  schema:
-                    type: string
-                    maxLength: 500
+                  type: string
+                  maxLength: 500
             requestBody:
                 required: true
                 content:
@@ -226,31 +216,27 @@ paths:
                 - name: id
                   in: header
                   required: true
-                  schema:
-                    type: integer
-                    format: int32
-                    minimum: 0
-                    maximum: 5000000
+                  type: integer
+                  format: int32
+                  minimum: 0
+                  maximum: 5000000
                 - name: inviteremail
                   in: header
                   required: false
-                  schema:
-                    type: string
-                    format: email
+                  type: string
+                  format: email
                 - name: inviterDefaultAppId
                   in: header
                   required: false
-                  schema:
-                    type: string
-                    maxLength: 500
+                  type: string
+                  maxLength: 500
                 - name: inviterUserRole
                   in: header
                   required: false
-                  schema:
-                    type: string
-                    enum:
-                        - Leader
-                        - Assistant
+                  type: string
+                  enum:
+                    - Leader
+                    - Assistant
             requestBody:
                 required: true
                 content:
@@ -314,29 +300,25 @@ paths:
                 - name: name
                   in: header
                   required: true
-                  schema:
-                    type: string
-                    maxLength: 256
+                  type: string
+                  maxLength: 256
                 - name: password
                   in: header
                   required: true
-                  schema:
-                    type: string
-                    maxLength: 256
+                  type: string
+                  maxLength: 256
                 - name: inviterDefaultAppId
                   in: header
                   required: false
-                  schema:
-                    type: string
-                    maxLength: 500
+                  type: string
+                  maxLength: 500
                 - name: inviterUserRole
                   in: header
                   required: false
-                  schema:
-                    type: string
-                    enum:
-                        - Leader
-                        - Assistant
+                  type: string
+                  enum:
+                    - Leader
+                    - Assistant
             requestBody:
                 required: true
                 content:
@@ -400,17 +382,15 @@ paths:
                 - name: id
                   in: header
                   required: true
-                  schema:
-                    type: integer
-                    format: int32
-                    minimum: 0
-                    maximum: 5000000
+                  type: integer
+                  format: int32
+                  minimum: 0
+                  maximum: 5000000
                 - name: defaultAppID
                   in: header
                   required: true
-                  schema:
-                    type: string
-                    maxLength: 500
+                  type: string
+                  maxLength: 500
             requestBody:
                 required: true
                 content:
@@ -474,11 +454,10 @@ paths:
                 - name: id
                   in: header
                   required: true
-                  schema:
-                    type: integer
-                    format: int32
-                    minimum: 0
-                    maximum: 5000000
+                  type: integer
+                  format: int32
+                  minimum: 0
+                  maximum: 5000000
             requestBody:
                 required: true
                 content:
