@@ -89,7 +89,7 @@ Class | Method | HTTP request | Description
 
 ## Documentation For Models
 
-
+API documentation for the Workgroup Assistant are located `./gss/doc/index.html`. It is a HTML page that contains all the information needed for API consumers and AI service agents.
 
 ## Documentation For Authorization
 
