@@ -28,10 +28,10 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = workgroup_assistant_api_client.DefaultApi()
-name = 'name_example' # str | 
-password = 'password_example' # str | 
-inviter_default_app_id = 'inviter_default_app_id_example' # str |  (optional)
-inviter_user_role = 'inviter_user_role_example' # str |  (optional)
+name = NULL # object | 
+password = NULL # object | 
+inviter_default_app_id = NULL # object |  (optional)
+inviter_user_role = NULL # object |  (optional)
 
 try:
     # Submit a login with user credential payload for group member with existing AI service agent
@@ -44,10 +44,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **name** | **str**|  | 
- **password** | **str**|  | 
- **inviter_default_app_id** | **str**|  | [optional] 
- **inviter_user_role** | **str**|  | [optional] 
+ **name** | [**object**](.md)|  | 
+ **password** | [**object**](.md)|  | 
+ **inviter_default_app_id** | [**object**](.md)|  | [optional] 
+ **inviter_user_role** | [**object**](.md)|  | [optional] 
 
 ### Return type
 
@@ -120,14 +120,14 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = workgroup_assistant_api_client.DefaultApi()
-avatar = 'avatar_example' # str | 
-name = 'name_example' # str | 
-email = 'email_example' # str | 
-password = 'password_example' # str | 
-slackname = 'slackname_example' # str | 
-researchgate = 'researchgate_example' # str | 
-default_app_id = 'default_app_id_example' # str | 
-default_app_description = 'default_app_description_example' # str | 
+avatar = NULL # object | 
+name = NULL # object | 
+email = NULL # object | 
+password = NULL # object | 
+slackname = NULL # object | 
+researchgate = NULL # object | 
+default_app_id = NULL # object | 
+default_app_description = NULL # object | 
 
 try:
     # Commit a new sign-up application payload for group member with new AI service agent onto Researcher Hub
@@ -140,14 +140,14 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **avatar** | **str**|  | 
- **name** | **str**|  | 
- **email** | **str**|  | 
- **password** | **str**|  | 
- **slackname** | **str**|  | 
- **researchgate** | **str**|  | 
- **default_app_id** | **str**|  | 
- **default_app_description** | **str**|  | 
+ **avatar** | [**object**](.md)|  | 
+ **name** | [**object**](.md)|  | 
+ **email** | [**object**](.md)|  | 
+ **password** | [**object**](.md)|  | 
+ **slackname** | [**object**](.md)|  | 
+ **researchgate** | [**object**](.md)|  | 
+ **default_app_id** | [**object**](.md)|  | 
+ **default_app_description** | [**object**](.md)|  | 
 
 ### Return type
 
@@ -179,10 +179,10 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = workgroup_assistant_api_client.DefaultApi()
-id = 56 # int | 
-inviteremail = 'inviteremail_example' # str |  (optional)
-inviter_default_app_id = 'inviter_default_app_id_example' # str |  (optional)
-inviter_user_role = 'inviter_user_role_example' # str |  (optional)
+id = NULL # object | 
+inviteremail = NULL # object |  (optional)
+inviter_default_app_id = NULL # object |  (optional)
+inviter_user_role = NULL # object |  (optional)
 
 try:
     # Load login payload as group member for existing AI service agent
@@ -195,10 +195,10 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
- **inviteremail** | **str**|  | [optional] 
- **inviter_default_app_id** | **str**|  | [optional] 
- **inviter_user_role** | **str**|  | [optional] 
+ **id** | [**object**](.md)|  | 
+ **inviteremail** | [**object**](.md)|  | [optional] 
+ **inviter_default_app_id** | [**object**](.md)|  | [optional] 
+ **inviter_user_role** | [**object**](.md)|  | [optional] 
 
 ### Return type
 
@@ -230,7 +230,7 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = workgroup_assistant_api_client.DefaultApi()
-id = 56 # int | 
+id = NULL # object | 
 
 try:
     # Get member's profile and voting preferences of AI service agent
@@ -243,7 +243,7 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
+ **id** | [**object**](.md)|  | 
 
 ### Return type
 
@@ -275,8 +275,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = workgroup_assistant_api_client.DefaultApi()
-id = 56 # int | 
-inviteremail = 'inviteremail_example' # str |  (optional)
+id = NULL # object | 
+inviteremail = NULL # object |  (optional)
 
 try:
     # Load sign-up application payload as group member for new AI service agent
@@ -289,8 +289,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
- **inviteremail** | **str**|  | [optional] 
+ **id** | [**object**](.md)|  | 
+ **inviteremail** | [**object**](.md)|  | [optional] 
 
 ### Return type
 
@@ -322,8 +322,8 @@ from pprint import pprint
 
 # create an instance of the API class
 api_instance = workgroup_assistant_api_client.DefaultApi()
-id = 56 # int | 
-default_app_id = 'default_app_id_example' # str | 
+id = NULL # object | 
+default_app_id = NULL # object | 
 
 try:
     # Get workgroup for AI service agent
@@ -336,8 +336,8 @@ except ApiException as e:
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **id** | **int**|  | 
- **default_app_id** | **str**|  | 
+ **id** | [**object**](.md)|  | 
+ **default_app_id** | [**object**](.md)|  | 
 
 ### Return type
 
