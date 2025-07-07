@@ -42,10 +42,10 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str name: (required)
-        :param str password: (required)
-        :param str inviter_default_app_id:
-        :param str inviter_user_role:
+        :param object name: (required)
+        :param object password: (required)
+        :param object inviter_default_app_id:
+        :param object inviter_user_role:
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -66,10 +66,10 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str name: (required)
-        :param str password: (required)
-        :param str inviter_default_app_id:
-        :param str inviter_user_role:
+        :param object name: (required)
+        :param object password: (required)
+        :param object inviter_default_app_id:
+        :param object inviter_user_role:
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -99,15 +99,6 @@ class DefaultApi(object):
                                                        params['password'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `password` when calling `execute_login_post`")  # noqa: E501
 
-        if self.api_client.client_side_validation and ('name' in params and
-                                                       len(params['name']) > 256):
-            raise ValueError("Invalid value for parameter `name` when calling `execute_login_post`, length must be less than or equal to `256`")  # noqa: E501
-        if self.api_client.client_side_validation and ('password' in params and
-                                                       len(params['password']) > 256):
-            raise ValueError("Invalid value for parameter `password` when calling `execute_login_post`, length must be less than or equal to `256`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inviter_default_app_id' in params and
-                                                       len(params['inviter_default_app_id']) > 500):
-            raise ValueError("Invalid value for parameter `inviter_default_app_id` when calling `execute_login_post`, length must be less than or equal to `500`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -237,14 +228,14 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str avatar: (required)
-        :param str name: (required)
-        :param str email: (required)
-        :param str password: (required)
-        :param str slackname: (required)
-        :param str researchgate: (required)
-        :param str default_app_id: (required)
-        :param str default_app_description: (required)
+        :param object avatar: (required)
+        :param object name: (required)
+        :param object email: (required)
+        :param object password: (required)
+        :param object slackname: (required)
+        :param object researchgate: (required)
+        :param object default_app_id: (required)
+        :param object default_app_description: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -265,14 +256,14 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param str avatar: (required)
-        :param str name: (required)
-        :param str email: (required)
-        :param str password: (required)
-        :param str slackname: (required)
-        :param str researchgate: (required)
-        :param str default_app_id: (required)
-        :param str default_app_description: (required)
+        :param object avatar: (required)
+        :param object name: (required)
+        :param object email: (required)
+        :param object password: (required)
+        :param object slackname: (required)
+        :param object researchgate: (required)
+        :param object default_app_id: (required)
+        :param object default_app_description: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -326,24 +317,6 @@ class DefaultApi(object):
                                                        params['default_app_description'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `default_app_description` when calling `execute_signup_post`")  # noqa: E501
 
-        if self.api_client.client_side_validation and ('name' in params and
-                                                       len(params['name']) > 256):
-            raise ValueError("Invalid value for parameter `name` when calling `execute_signup_post`, length must be less than or equal to `256`")  # noqa: E501
-        if self.api_client.client_side_validation and ('password' in params and
-                                                       len(params['password']) > 256):
-            raise ValueError("Invalid value for parameter `password` when calling `execute_signup_post`, length must be less than or equal to `256`")  # noqa: E501
-        if self.api_client.client_side_validation and ('slackname' in params and
-                                                       len(params['slackname']) > 256):
-            raise ValueError("Invalid value for parameter `slackname` when calling `execute_signup_post`, length must be less than or equal to `256`")  # noqa: E501
-        if self.api_client.client_side_validation and ('researchgate' in params and
-                                                       len(params['researchgate']) > 256):
-            raise ValueError("Invalid value for parameter `researchgate` when calling `execute_signup_post`, length must be less than or equal to `256`")  # noqa: E501
-        if self.api_client.client_side_validation and ('default_app_id' in params and
-                                                       len(params['default_app_id']) > 500):
-            raise ValueError("Invalid value for parameter `default_app_id` when calling `execute_signup_post`, length must be less than or equal to `500`")  # noqa: E501
-        if self.api_client.client_side_validation and ('default_app_description' in params and
-                                                       len(params['default_app_description']) > 500):
-            raise ValueError("Invalid value for parameter `default_app_description` when calling `execute_signup_post`, length must be less than or equal to `500`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -400,10 +373,10 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int id: (required)
-        :param str inviteremail:
-        :param str inviter_default_app_id:
-        :param str inviter_user_role:
+        :param object id: (required)
+        :param object inviteremail:
+        :param object inviter_default_app_id:
+        :param object inviter_user_role:
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -424,10 +397,10 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int id: (required)
-        :param str inviteremail:
-        :param str inviter_default_app_id:
-        :param str inviter_user_role:
+        :param object id: (required)
+        :param object inviteremail:
+        :param object inviter_default_app_id:
+        :param object inviter_user_role:
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -453,13 +426,6 @@ class DefaultApi(object):
                                                        params['id'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `id` when calling `load_login_post`")  # noqa: E501
 
-        if self.api_client.client_side_validation and ('id' in params and params['id'] > 5000000):  # noqa: E501
-            raise ValueError("Invalid value for parameter `id` when calling `load_login_post`, must be a value less than or equal to `5000000`")  # noqa: E501
-        if self.api_client.client_side_validation and ('id' in params and params['id'] < 0):  # noqa: E501
-            raise ValueError("Invalid value for parameter `id` when calling `load_login_post`, must be a value greater than or equal to `0`")  # noqa: E501
-        if self.api_client.client_side_validation and ('inviter_default_app_id' in params and
-                                                       len(params['inviter_default_app_id']) > 500):
-            raise ValueError("Invalid value for parameter `inviter_default_app_id` when calling `load_login_post`, length must be less than or equal to `500`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -508,7 +474,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int id: (required)
+        :param object id: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -529,7 +495,7 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int id: (required)
+        :param object id: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -555,10 +521,6 @@ class DefaultApi(object):
                                                        params['id'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `id` when calling `load_members_profile_post`")  # noqa: E501
 
-        if self.api_client.client_side_validation and ('id' in params and params['id'] > 5000000):  # noqa: E501
-            raise ValueError("Invalid value for parameter `id` when calling `load_members_profile_post`, must be a value less than or equal to `5000000`")  # noqa: E501
-        if self.api_client.client_side_validation and ('id' in params and params['id'] < 0):  # noqa: E501
-            raise ValueError("Invalid value for parameter `id` when calling `load_members_profile_post`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -601,8 +563,8 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int id: (required)
-        :param str inviteremail:
+        :param object id: (required)
+        :param object inviteremail:
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -623,8 +585,8 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int id: (required)
-        :param str inviteremail:
+        :param object id: (required)
+        :param object inviteremail:
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -650,10 +612,6 @@ class DefaultApi(object):
                                                        params['id'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `id` when calling `load_signup_post`")  # noqa: E501
 
-        if self.api_client.client_side_validation and ('id' in params and params['id'] > 5000000):  # noqa: E501
-            raise ValueError("Invalid value for parameter `id` when calling `load_signup_post`, must be a value less than or equal to `5000000`")  # noqa: E501
-        if self.api_client.client_side_validation and ('id' in params and params['id'] < 0):  # noqa: E501
-            raise ValueError("Invalid value for parameter `id` when calling `load_signup_post`, must be a value greater than or equal to `0`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}
@@ -698,8 +656,8 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int id: (required)
-        :param str default_app_id: (required)
+        :param object id: (required)
+        :param object default_app_id: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -720,8 +678,8 @@ class DefaultApi(object):
         >>> result = thread.get()
 
         :param async_req bool
-        :param int id: (required)
-        :param str default_app_id: (required)
+        :param object id: (required)
+        :param object default_app_id: (required)
         :return: None
                  If the method is called asynchronously,
                  returns the request thread.
@@ -751,13 +709,6 @@ class DefaultApi(object):
                                                        params['default_app_id'] is None):  # noqa: E501
             raise ValueError("Missing the required parameter `default_app_id` when calling `load_workgroup_post`")  # noqa: E501
 
-        if self.api_client.client_side_validation and ('id' in params and params['id'] > 5000000):  # noqa: E501
-            raise ValueError("Invalid value for parameter `id` when calling `load_workgroup_post`, must be a value less than or equal to `5000000`")  # noqa: E501
-        if self.api_client.client_side_validation and ('id' in params and params['id'] < 0):  # noqa: E501
-            raise ValueError("Invalid value for parameter `id` when calling `load_workgroup_post`, must be a value greater than or equal to `0`")  # noqa: E501
-        if self.api_client.client_side_validation and ('default_app_id' in params and
-                                                       len(params['default_app_id']) > 500):
-            raise ValueError("Invalid value for parameter `default_app_id` when calling `load_workgroup_post`, length must be less than or equal to `500`")  # noqa: E501
         collection_formats = {}
 
         path_params = {}

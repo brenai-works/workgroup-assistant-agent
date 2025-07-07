@@ -16,15 +16,9 @@ paths:
       - name: "id"
         in: "header"
         required: true
-        type: "integer"
-        maximum: 5000000
-        minimum: 0
-        format: "int32"
       - name: "inviteremail"
         in: "header"
         required: false
-        type: "string"
-        format: "email"
       security:
       - defaultApiKey: []
       responses:
@@ -52,47 +46,27 @@ paths:
       - name: "avatar"
         in: "header"
         required: true
-        type: "string"
-        enum:
-        - "robotPurple.png"
-        - "robotGreen.png"
-        - "robotOrange.png"
-        - "robotRed.png"
       - name: "name"
         in: "header"
         required: true
-        type: "string"
-        maxLength: 256
       - name: "email"
         in: "header"
         required: true
-        type: "string"
-        format: "email"
       - name: "password"
         in: "header"
         required: true
-        type: "string"
-        maxLength: 256
       - name: "slackname"
         in: "header"
         required: true
-        type: "string"
-        maxLength: 256
       - name: "researchgate"
         in: "header"
         required: true
-        type: "string"
-        maxLength: 256
       - name: "defaultAppID"
         in: "header"
         required: true
-        type: "string"
-        maxLength: 500
       - name: "defaultAppDescription"
         in: "header"
         required: true
-        type: "string"
-        maxLength: 500
       security:
       - defaultApiKey: []
       responses:
@@ -117,27 +91,15 @@ paths:
       - name: "id"
         in: "header"
         required: true
-        type: "integer"
-        maximum: 5000000
-        minimum: 0
-        format: "int32"
       - name: "inviteremail"
         in: "header"
         required: false
-        type: "string"
-        format: "email"
       - name: "inviterDefaultAppId"
         in: "header"
         required: false
-        type: "string"
-        maxLength: 500
       - name: "inviterUserRole"
         in: "header"
         required: false
-        type: "string"
-        enum:
-        - "Leader"
-        - "Assistant"
       security:
       - defaultApiKey: []
       responses:
@@ -164,25 +126,15 @@ paths:
       - name: "name"
         in: "header"
         required: true
-        type: "string"
-        maxLength: 256
       - name: "password"
         in: "header"
         required: true
-        type: "string"
-        maxLength: 256
       - name: "inviterDefaultAppId"
         in: "header"
         required: false
-        type: "string"
-        maxLength: 500
       - name: "inviterUserRole"
         in: "header"
         required: false
-        type: "string"
-        enum:
-        - "Leader"
-        - "Assistant"
       security:
       - defaultApiKey: []
       responses:
@@ -207,15 +159,9 @@ paths:
       - name: "id"
         in: "header"
         required: true
-        type: "integer"
-        maximum: 5000000
-        minimum: 0
-        format: "int32"
       - name: "defaultAppID"
         in: "header"
         required: true
-        type: "string"
-        maxLength: 500
       security:
       - defaultApiKey: []
       responses:
@@ -241,10 +187,6 @@ paths:
       - name: "id"
         in: "header"
         required: true
-        type: "integer"
-        maximum: 5000000
-        minimum: 0
-        format: "int32"
       security:
       - defaultApiKey: []
       responses:

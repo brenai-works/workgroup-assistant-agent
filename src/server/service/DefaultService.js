@@ -4,10 +4,10 @@
 /**
  * Submit a login with user credential payload for group member with existing AI service agent
  *
- * name String 
- * password String 
- * inviterDefaultAppId String  (optional)
- * inviterUserRole String  (optional)
+ * name Object 
+ * password Object 
+ * inviterDefaultAppId Object  (optional)
+ * inviterUserRole Object  (optional)
  * no response value expected for this operation
  **/
 exports.execute_loginPOST = function(name,password,inviterDefaultAppId,inviterUserRole) {
@@ -32,14 +32,14 @@ exports.execute_logoutPOST = function() {
 /**
  * Commit a new sign-up application payload for group member with new AI service agent onto Researcher Hub
  *
- * avatar String 
- * name String 
- * email String 
- * password String 
- * slackname String 
- * researchgate String 
- * defaultAppID String 
- * defaultAppDescription String 
+ * avatar Object 
+ * name Object 
+ * email Object 
+ * password Object 
+ * slackname Object 
+ * researchgate Object 
+ * defaultAppID Object 
+ * defaultAppDescription Object 
  * no response value expected for this operation
  **/
 exports.execute_signupPOST = function(avatar,name,email,password,slackname,researchgate,defaultAppID,defaultAppDescription) {
@@ -52,10 +52,10 @@ exports.execute_signupPOST = function(avatar,name,email,password,slackname,resea
 /**
  * Load login payload as group member for existing AI service agent
  *
- * id Integer 
- * inviteremail String  (optional)
- * inviterDefaultAppId String  (optional)
- * inviterUserRole String  (optional)
+ * id Object 
+ * inviteremail Object  (optional)
+ * inviterDefaultAppId Object  (optional)
+ * inviterUserRole Object  (optional)
  * no response value expected for this operation
  **/
 exports.load_loginPOST = function(id,inviteremail,inviterDefaultAppId,inviterUserRole) {
@@ -68,7 +68,7 @@ exports.load_loginPOST = function(id,inviteremail,inviterDefaultAppId,inviterUse
 /**
  * Get member's profile and voting preferences of AI service agent
  *
- * id Integer 
+ * id Object 
  * no response value expected for this operation
  **/
 exports.load_members_profilePOST = function(id) {
@@ -81,8 +81,8 @@ exports.load_members_profilePOST = function(id) {
 /**
  * Load sign-up application payload as group member for new AI service agent
  *
- * id Integer 
- * inviteremail String  (optional)
+ * id Object 
+ * inviteremail Object  (optional)
  * no response value expected for this operation
  **/
 exports.load_signupPOST = function(id,inviteremail) {
@@ -95,8 +95,8 @@ exports.load_signupPOST = function(id,inviteremail) {
 /**
  * Get workgroup for AI service agent
  *
- * id Integer 
- * defaultAppID String 
+ * id Object 
+ * defaultAppID Object 
  * no response value expected for this operation
  **/
 exports.load_workgroupPOST = function(id,defaultAppID) {
