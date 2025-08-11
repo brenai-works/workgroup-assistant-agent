@@ -1,4 +1,4 @@
-# workgroup_assistant_api_client.DefaultApi
+# Workgroup Assistant API Client SDK
 
 All URIs are relative to *https://localhost*
 
