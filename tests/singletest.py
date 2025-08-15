@@ -7,10 +7,10 @@ from pprint import pprint
 
 # create an instance of the API class
 configuration = Configuration()
-docker_container = "localhost"
+host_container = "localhost"
 server_port = "4042"
 namespace = '/v1/gss'
-configuration.host = 'http://' + docker_container + ':' + server_port + '' + namespace
+configuration.host = 'http://' + host_container + ':' + server_port + '' + namespace
 api_instance = workgroup_assistant_api_client.DefaultApi(workgroup_assistant_api_client.ApiClient(configuration))
 name = "testuser" # object | 
 password = "testpass" # object | 
