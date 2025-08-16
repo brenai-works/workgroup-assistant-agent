@@ -1,22 +1,3 @@
-<style>
-    .boxed {
-    background: #F2F2F2;
-    color: black;
-    border: 3px solid #535353;
-    margin: 0px auto;
-    width: 456px;
-    padding: 10px;
-    border-radius: 10px;
-    }
-    .num {
-    background: #F2F2F2;
-    color: black;
-    border: 3px solid #535353;
-    width: 25px;
-    border-radius: 10px;
-    }
-</style>
-
 # Workgroup Assistant
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Researcher Hub](https://img.shields.io/badge/visit-Researcher_Hub_platform-blue)]()
@@ -86,17 +67,15 @@ Below is a scenerio for multi-step agent support for AI Service Agents. An exter
 
 ### <ins>AI Service Agent Inital Prompt</ins>:
 
-<div class="num">
-<font size="4pt"><b>A.</b></font>
-</div>
+| A |
+| -- |
 
     You are a helpful service agent that has a human client called {{client_id}}. The human client called {{client_id}} wants to support a workgroup called {{workgroup id}} on the Researcher Hub platform for some work on a research project on stem cell therapy for spinal cord injuries @[#context]. You intend to execute a series of actions via prompts to help you achieve your tasks to support the workgroup called {{workgroup id}} on the Researcher Hub platform @[#intention]. Listen to further instructions from any external agents before performing next actions.
 
 **...[`>>listen`] to external agent(s)...**
 
-<div class="num">
-<font size="4pt"><b>B.</b></font>
-</div>
+| B |
+| -- |
 
     You intend to support the group through a workgroup assistant API using context of {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]@[#intention]. The human client called {{client_id}} is a NEW account holder of Researcher Hub @[#context]. You intend to write some python code that access the appropriate API endpoint using host {{hostname}}, {{namespace}}, and {{portnumber}} as part of the APIs calls to access the workgroup @[#intention]. Listen for further instructions to make next move.
 
@@ -106,9 +85,8 @@ Below is a scenerio for multi-step agent support for AI Service Agents. An exter
 
 **...[`>>listen`] to external agent(s)...**
 
-<div class="num">
-<font size="4pt"><b>C.</b></font>
-</div>
+| C |
+| -- |
 
     Write some python code that allows the human client called {{client_id}} to support the workgroup called {{workgroup id}} on the Researcher Hub platform. You have been told that human client called {{client_id}} is a NEW account holder of Researcher Hub @[#context]. Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that call the python SDK method called {{method_name}}, which loads the signup form to access the Researcher Hub platform.
 
@@ -169,9 +147,8 @@ except ApiException as e:
 
 **...[`>>outcome`] of agent ...**
 
-<div class="num">
-<font size="4pt"><b>D.</b></font>
-</div>
+| D |
+| -- |
 
     Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that allows the human client called {{client_id}} to support the workgroup called {{workgroup id}} on the Researcher Hub platform. You are told that human client called {{client_id}} is a EXISTING account holder of Researcher Hub @[#context]. Write some python code that calls endpoint called {{endpoint}}, which loads the login form to access the Researcher Hub platform.
 
@@ -198,9 +175,8 @@ except ApiException as e:
 
 **...[`>>outcome`] of agent ...**
 
-<div class="num">
-<font size="4pt"><b>E.</b></font>
-</div>
+| E |
+| -- |
 
     You have signed up or login into Researcher Hub for the human client called {{client_id}} @[#context]. You intend to obtain the workgroup details and the human client's profile to conduct votes on group decisions for the workgroup called {{group_id}} @[#intention]. Before getting information about the workgroup, listen and collect the following information from the human client called {{client_id}}:
 
@@ -223,9 +199,8 @@ except ApiException as e:
 
 **...[`>>outcome`] of agent ...**
 
-<div class="num">
-<font size="4pt"><b>F.</b></font>
-</div>
+| F |
+| -- |
 
     You have signed up or login into Researcher Hub for the human client called {{client_id}} @[#context]. You intend to obtain the workgroup details and the human client's profile to conduct votes on group decisions for the workgroup called {{group_id}} @[#intention]. Before getting information about the human client's profile, listen and collect the following information from the human client called {{client_id}}:
  
@@ -243,21 +218,19 @@ except ApiException as e:
 
 **...[`>>outcome`] of agent ...**
 
-<div class="num">
-<font size="4pt"><b>H.</b></font>
-</div>
+| G |
+| -- |
 
 <p align="center">
 <br />
-<div class="boxed">
-<font size="4pt"><b >Workgroup Voting Actions [work-in-progress]...</b></font>
-</div>
+<font size="4pt"><b>
+Workgroup Voting Actions [work-in-progress]...
+</b></font>
 <br />
 </p>
 
-<div class="num">
-<font size="4pt"><b>I.</b></font>
-</div>
+| H |
+| -- |
 
     You have signed up or login into Researcher Hub for the human client called {{client_id}}. You intend to logout of Researcher Hub for the human client called {{client_id}}. Write some python code that calls endpoint called {{endpoint}}. Execute the python code to logout from the Researcher Hub.
 
