@@ -221,13 +221,9 @@ except ApiException as e:
 | G |
 | -- |
 
-<p align="center">
-<br />
-<font size="4pt"><b>
-Workgroup Voting Actions [work-in-progress]...
-</b></font>
-<br />
-</p>
+| Workgroup Voting Actions [work-in-progress]... |
+| ---------------------------------------------- |
+
 
 | H |
 | -- |
