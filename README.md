@@ -70,25 +70,25 @@ Below is a scenerio for multi-step agent support for AI Service Agents. An exter
 | A |
 | -- |
 
-    You are a helpful service agent that has a human client called {{client_id}}. The human client called {{client_id}} wants to support a workgroup called {{workgroup id}} on the Researcher Hub platform for some work on a research project on stem cell therapy for spinal cord injuries @[#context]. You intend to execute a series of actions via prompts to help you achieve your tasks to support the workgroup called {{workgroup id}} on the Researcher Hub platform @[#intention]. Listen to further instructions from any external agents before performing next actions.
+>You are a helpful service agent that has a human client called {{client_id}}. The human client called {{client_id}} wants to support a workgroup called {{workgroup id}} on the Researcher Hub platform for some work on a research project on stem cell therapy for spinal cord injuries @[#context]. You intend to execute a series of actions via prompts to help you achieve your tasks to support the workgroup called {{workgroup id}} on the Researcher Hub platform @[#intention]. Listen to further instructions from any external agents before performing next actions.
 
 **...[`>>listen`] to external agent(s)...**
 
 | B |
 | -- |
 
-    You intend to support the group through a workgroup assistant API using context of {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]@[#intention]. The human client called {{client_id}} is a NEW account holder of Researcher Hub @[#context]. You intend to write some python code that access the appropriate API endpoint using host {{hostname}}, {{namespace}}, and {{portnumber}} as part of the APIs calls to access the workgroup @[#intention]. Listen for further instructions to make next move.
+>You intend to support the group through a workgroup assistant API using context of {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]@[#intention]. The human client called {{client_id}} is a NEW account holder of Researcher Hub @[#context]. You intend to write some python code that access the appropriate API endpoint using host {{hostname}}, {{namespace}}, and {{portnumber}} as part of the APIs calls to access the workgroup @[#intention]. Listen for further instructions to make next move.
 
 **...[`>>decide`]\<`OR`\> on action to proceed with login or sign-up...**
 
-    You intend to support the group through a workgroup assistant API using context of {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]@[#intention]. The human client called {{client_id}} is an EXISTING account holder of Researcher Hub @[#context]. You intend to write some python code that access the appropriate API endpoint using host {{hostname}}, {{namespace}}, and {{portnumber}} as part of the the APIs call to access the workgroup @[#intention]. Listen for further instructions to make next move.
+>You intend to support the group through a workgroup assistant API using context of {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]@[#intention]. The human client called {{client_id}} is an EXISTING account holder of Researcher Hub @[#context]. You intend to write some python code that access the appropriate API endpoint using host {{hostname}}, {{namespace}}, and {{portnumber}} as part of the the APIs call to access the workgroup @[#intention]. Listen for further instructions to make next move.
 
 **...[`>>listen`] to external agent(s)...**
 
 | C |
 | -- |
 
-    Write some python code that allows the human client called {{client_id}} to support the workgroup called {{workgroup id}} on the Researcher Hub platform. You have been told that human client called {{client_id}} is a NEW account holder of Researcher Hub @[#context]. Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that call the python SDK method called {{method_name}}, which loads the signup form to access the Researcher Hub platform.
+>Write some python code that allows the human client called {{client_id}} to support the workgroup called {{workgroup id}} on the Researcher Hub platform. You have been told that human client called {{client_id}} is a NEW account holder of Researcher Hub @[#context]. Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that call the python SDK method called {{method_name}}, which loads the signup form to access the Researcher Hub platform.
 
 **...[`>>instruct`] agent to write and execute python ...**
 
@@ -125,96 +125,96 @@ except ApiException as e:
 
 **...[`>>outcome`] of agent ...**
 
-    Before you process the signup with the endpoint called {{endpoint}}, listen and collect the following information about the human client called {{client_id}}:
-    
-    - Username or name: {{username}}
-    - Password: {{password}}
-    - Email address: {{email}}
-    - Slack name: {{slackname}}
-    - URL address of Research Gate Profile: {{research_gate_url}}
-    - Default name of an app for development: {{default_app_id}}
-    - Default description of the app for development: {{default_app_description}}
-    
-    Collect and present this information as a JSON payload for sign-up. Listen for further instructions to process sign-up.
+>Before you process the signup with the endpoint called {{endpoint}}, listen and collect the following information about the human client called {{client_id}}:
+>    
+>- Username or name: {{username}}
+>- Password: {{password}}
+>- Email address: {{email}}
+>- Slack name: {{slackname}}
+>- URL address of Research Gate Profile: {{research_gate_url}}
+>- Default name of an app for development: {{default_app_id}}
+>- Default description of the app for development: {{default_app_description}}
+>    
+>Collect and present this information as a JSON payload for sign-up. Listen for further instructions to process sign-up.
 
 **...[`>>listen`] & [`>>collect`] information...**
 
-    Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that calls endpoint called {{endpoint}}, using the JSON payload of human client information collected in previous prompt. Execute python code to process sign-up.
+>Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that calls endpoint called {{endpoint}}, using the JSON payload of human client information collected in previous prompt. Execute python code to process sign-up.
 
 **...[`>>instruct`] agent to process sign-up...**
 
-    <<generated python code for previous prompt>>
+><\<generated python code for previous prompt>>
 
 **...[`>>outcome`] of agent ...**
 
 | D |
 | -- |
 
-    Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that allows the human client called {{client_id}} to support the workgroup called {{workgroup id}} on the Researcher Hub platform. You are told that human client called {{client_id}} is a EXISTING account holder of Researcher Hub @[#context]. Write some python code that calls endpoint called {{endpoint}}, which loads the login form to access the Researcher Hub platform.
+>Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that allows the human client called {{client_id}} to support the workgroup called {{workgroup id}} on the Researcher Hub platform. You are told that human client called {{client_id}} is a EXISTING account holder of Researcher Hub @[#context]. Write some python code that calls endpoint called {{endpoint}}, which loads the login form to access the Researcher Hub platform.
 
 **...[`>>instruct`] agent to write and execute python ...**
 
-    <<generated python code for previous prompt>>
+><\<generated python code for previous prompt>>
 
 **...[`>>outcome`] of agent ...**
 
-    Before you process the login with the endpoint called {{endpoint}}, listen and collect the following information about the human client called {{client_id}}:
-    
-    - Username or name: {{username}}
-    - Password: {{password}}
-    
-    Collect and present this information as a JSON payload for login. Listen for further instructions to process login.
+>Before you process the login with the endpoint called {{endpoint}}, listen and collect the following information about the human client called {{client_id}}:
+>    
+>- Username or name: {{username}}
+>- Password: {{password}}
+>    
+>Collect and present this information as a JSON payload for login. Listen for further instructions to process login.
 
 **...[`>>listen`] & [`>>collect`] information...**
 
-    Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that calls endpoint called {{endpoint}}, using the JSON payload of human client information collected in previous prompt. Execute python code to process login.
- 
+>Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that calls endpoint called {{endpoint}}, using the JSON payload of human client information collected in previous prompt. Execute python code to process login.
+
 **...[`>>instruct`] agent to write python and process login...**
 
-    <<generated python code for previous prompt>>
+><\<generated python code for previous prompt>>
 
 **...[`>>outcome`] of agent ...**
 
 | E |
 | -- |
 
-    You have signed up or login into Researcher Hub for the human client called {{client_id}} @[#context]. You intend to obtain the workgroup details and the human client's profile to conduct votes on group decisions for the workgroup called {{group_id}} @[#intention]. Before getting information about the workgroup, listen and collect the following information from the human client called {{client_id}}:
-
-    - User Identification from Researcher Hub: {{user_id}}
-    - Default name of an app for development: {{default_app_id}}
-    
-    Collect and present this information as a JSON payload to get workgroup information. Listen for further instructions to write and execute python code to process workgroup load.
+>You have signed up or login into Researcher Hub for the human client called {{client_id}} @[#context]. You intend to obtain the workgroup details and the human client's profile to conduct votes on group decisions for the workgroup called {{group_id}} @[#intention]. Before getting information about the workgroup, listen and collect the following information from the human client called {{client_id}}:
+>
+>- User Identification from Researcher Hub: {{user_id}}
+>- Default name of an app for development: {{default_app_id}}
+>    
+>Collect and present this information as a JSON payload to get workgroup information. Listen for further instructions to write and execute python code to process workgroup load.
 
  **...[`>>listen`] & [`>>collect`] information...**   
 
-    <<generated python code for previous prompt>>
+><\<generated python code for previous prompt>>
 
 **...[`>>outcome`] of agent ...**
 
-    Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that calls endpoint called {{endpoint}}, using the JSON payload of workgroup information collected from the previous prompt. Execute python code to get workgroup details. 
+>Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that calls endpoint called {{endpoint}}, using the JSON payload of workgroup information collected from the previous prompt. Execute python code to get workgroup details. 
 
 **...[`>>instruct`] agent to write python and load workgroup...**         
 
-    <<generated python code for previous prompt>>
+><\<generated python code for previous prompt>>
 
 **...[`>>outcome`] of agent ...**
 
 | F |
 | -- |
 
-    You have signed up or login into Researcher Hub for the human client called {{client_id}} @[#context]. You intend to obtain the workgroup details and the human client's profile to conduct votes on group decisions for the workgroup called {{group_id}} @[#intention]. Before getting information about the human client's profile, listen and collect the following information from the human client called {{client_id}}:
- 
-    - User Identification from Researcher Hub: {{user_id}}
-
-    Collect and present this information as a JSON payload to collect human client's profile from Researcher Hub. Listen for further instructions to write and execute python code to process workgroup load.
+>You have signed up or login into Researcher Hub for the human client called {{client_id}} @[#context]. You intend to obtain the workgroup details and the human client's profile to conduct votes on group decisions for the workgroup called {{group_id}} @[#intention]. Before getting information about the human client's profile, listen and collect the following information from the human client called {{client_id}}:
+> 
+>- User Identification from Researcher Hub: {{user_id}}
+>
+>Collect and present this information as a JSON payload to collect human client's profile from Researcher Hub. Listen for further instructions to write and execute python code to process workgroup load.
 
  **...[`>>listen`] & [`>>collect`] information...**       
-    
-    Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that calls endpoint called {{endpoint}}, using the JSON payload of the human client's payload from the previous prompt. Execute python code to get the human client's profile from Researcher Hub.  
+   
+>Refer to the {{codesnippet.html}} file stored on GitHub Repo name called {{github_repo}} @[#context]. Write some python code that calls endpoint called {{endpoint}}, using the JSON payload of the human client's payload from the previous prompt. Execute python code to get the human client's profile from Researcher Hub.  
 
 **...[`>>instruct`] agent to write python and load client's profile...**   
 
-    <<generated python code for previous prompt>>
+><\<generated python code for previous prompt>>
 
 **...[`>>outcome`] of agent ...**
 
@@ -228,10 +228,10 @@ except ApiException as e:
 | H |
 | -- |
 
-    You have signed up or login into Researcher Hub for the human client called {{client_id}}. You intend to logout of Researcher Hub for the human client called {{client_id}}. Write some python code that calls endpoint called {{endpoint}}. Execute the python code to logout from the Researcher Hub.
+>You have signed up or login into Researcher Hub for the human client called {{client_id}}. You intend to logout of Researcher Hub for the human client called {{client_id}}. Write some python code that calls endpoint called {{endpoint}}. Execute the python code to logout from the Researcher Hub.
 
 **...[`>>instruct`] agent to write python and logout...**   
 
-    <<generated python code for previous prompt>>
+><\<generated python code for previous prompt>>
 
 **...[`>>outcome`] of agent ...**
