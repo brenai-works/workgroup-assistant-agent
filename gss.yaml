@@ -356,7 +356,7 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schema/Message'
+                                $ref: '#/components/schemas/Message'
                             examples:
                                 Message200Status:
                                     $ref: "#/components/examples/Message200Status"
@@ -430,7 +430,7 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schema/Workgroup'
+                                $ref: '#/components/schemas/Workgroup'
                             examples:
                                 Message200Workgroup:
                                     $ref: '#/components/examples/Message200Workgroup'
@@ -499,7 +499,7 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schema/IndividualMember'
+                                $ref: '#/components/schemas/IndividualMember'
                             examples:
                                 Message200Member:
                                     $ref: '#/components/examples/Message200Member'
@@ -547,7 +547,7 @@ paths:
                     content:
                         application/json:
                             schema:
-                                $ref: '#/components/schema/Message'
+                                $ref: '#/components/schemas/Message'
                             examples:
                                 Message200Status:
                                     $ref: '#/components/examples/Message200Status'
