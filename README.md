@@ -18,7 +18,7 @@ The current features are as follows:
 This microservice is hosted on mirror images of Cloud computing. Specification of the service is defined in the OpenAPI definitions contained in this repository. As part of the OpenAPI definition, the [Server Object](https://learn.openapis.org/specification/servers.html) is used to define API servers in two locations. There are seperate API servers for Asia clients, Australia and New Zealand clients, and North American clients. 
 
 ## Conceptual Overview
-This control flow depicts the API calls to support workgroup decisions. The control flow consist of a loop of actions; signup new members with AI service agent, open session for member's AI service agent, load workgroup and members status, load voting tools, track group actions in decision table, analyse voting results, and then wait for the AI service agent before iterating the loop or terminating the session.
+This control flow depicts the API calls to support workgroup decisions. The control flow consist of a loop of actions; signup new members with AI service agent, open session for member's AI service agent, load workgroup and members status, load voting tools, track group actions in decision table and then wait for the AI service agent before iterating the loop or terminating the session. The AI service agent(s) will provide group results showing levels of consensus and conflict among group tasks.
 
 ![Control Flow Diagram](control_flow.jpg)
 
@@ -36,10 +36,10 @@ This control flow depicts the API calls to support workgroup decisions. The cont
 
 - `/v1/gss/observe-voting-round` - Observe voting round(s) and polls via workgroup for AI service agent.
 - `/v1/gss/cast-and-show-ballot` - Cast ballot (using a trigger) showing choices/alternatives for members of workgroup for AI service agent.
-- `/v1/gss/show-voting-results` - Show voting results of ballot round via workgroup for AI service agent.
+- `/v1/gss/get-votes` - Obtain votes of ballot round for AI service agent.
 - `/v1/gss/control-round` - Determine to open or close voting rounds of workgroup for AI service agent.
-- `/v1/gss/analyse-partial-results` - Analyse partial voting results of workgroup for AI service agent.
-- `/v1/gss/analyse-final-results` - Analyse final voting results of workgroup for AI service agent.
+- ~~`/v1/gss/analyse-partial-results` - Analyse partial voting results of workgroup for AI service agent.~~
+- ~~`/v1/gss/analyse-final-results` - Analyse final voting results of workgroup for AI service agent.~~
 
 ## Repository Assets
 
