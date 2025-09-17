@@ -1,0 +1,197 @@
+---
+swagger: "2.0"
+info:
+  description: "Workgroup assistant microservice in Researcher Hub"
+  version: "1.1.0"
+  title: "Workgroup Assistant API"
+paths:
+  /v1/gss/load-signup:
+    post:
+      summary: "Load sign-up application payload as group member for new AI service agent"
+      operationId: "loadSignupPost"
+      parameters:
+      - name: "id"
+        type: "integer"
+        in: "header"
+        required: true
+      - name: "inviteremail"
+        type: "string"
+        in: "header"
+        required: false
+      responses:
+        "200":
+          description: "The sign-up payload for workgroup members. The signup payload is returned which includes avatar, name, email, password, slackname, researchgate url, default app id, and default app description. A status code 200 is returned."
+        "404":
+          description: "No sign-up payload found for workgroup member. Error message with  status code 404 is returned."
+        "500":
+          description: "Internal error occured. Error message with status code 500 is returned."
+        "400":
+          description: "Unexpected error occured. Error message with status code 400 is returned."
+      x-swagger-router-controller: "gss"
+  /v1/gss/execute-signup:
+    post:
+      summary: "Commit a new sign-up application payload for group member with new AI service agent onto Researcher Hub"
+      operationId: "executeSignupPost"
+      parameters:
+      - name: "avatar"
+        type: "string"
+        in: "header"
+        required: true
+      - name: "name"
+        type: "string"
+        in: "header"
+        required: true
+      - name: "email"
+        type: "string"
+        in: "header"
+        required: true
+      - name: "password"
+        type: "string"
+        in: "header"
+        required: true
+      - name: "slackname"
+        type: "string"
+        in: "header"
+        required: true
+      - name: "researchgate"
+        type: "string"
+        in: "header"
+        required: true
+      - name: "defaultAppID"
+        type: "string"
+        in: "header"
+        required: true
+      - name: "defaultAppDescription"
+        type: "string"
+        in: "header"
+        required: true
+      responses:
+        "200":
+          description: "The credential of group member with existing AI service agent. A standard OK message with  status code 200 is return."
+        "404":
+          description: "No resource found for user credential. Error message with status code  404 is returned."
+        "500":
+          description: "Internal error occured. Error message with status code 500 is returned."
+        "400":
+          description: "Unexpected error occured. Error message with status code 400 is returned."
+      x-swagger-router-controller: "gss"
+  /v1/gss/load-login:
+    post:
+      summary: "Load login payload as group member for existing AI service agent"
+      operationId: "loadLoginPost"
+      parameters:
+      - name: "id"
+        type: "string"
+        in: "header"
+        required: true
+      - name: "inviteremail"
+        type: "string"
+        in: "header"
+        required: false
+      - name: "inviterDefaultAppId"
+        type: "string"
+        in: "header"
+        required: false
+      - name: "inviterUserRole"
+        type: "string"
+        in: "header"
+        required: false
+      responses:
+        "200":
+          description: "The login payload for workgroup member. A login payload is returned include with username and password. A status code 200 is also returned."
+        "404":
+          description: "No login payload found for workgroup member. Error message with status code 404 is returned."
+        "500":
+          description: "Internal error occured. Error message with status code 500 is returned."
+        "400":
+          description: "Unexpected error occured. Error message with status code 400 is returned."
+      x-swagger-router-controller: "gss"
+  /v1/gss/execute-login:
+    post:
+      summary: "Submit a login with user credential payload for group member with existing AI service agent"
+      operationId: "executeLoginPost"
+      parameters:
+      - name: "name"
+        type: "string"
+        in: "header"
+        required: true
+      - name: "password"
+        type: "string"
+        in: "header"
+        required: true
+      - name: "inviterDefaultAppId"
+        type: "string"
+        in: "header"
+        required: false
+      - name: "inviterUserRole"
+        type: "string"
+        in: "header"
+        required: false
+      responses:
+        "200":
+          description: "The workgroup and member's profile on Researcher Hub. A standard OK message is returned with a status code 200."
+        "404":
+          description: "No resource found for workgroup and member's profile on Researcher Hub. Error message is returned with status code 404."
+        "500":
+          description: "Internal error occured. Error message is returned with status code 500."
+        "400":
+          description: "Unexpected error occured. Error message is returned with status code 400."
+      x-swagger-router-controller: "gss"
+  /v1/gss/load-workgroup:
+    post:
+      summary: "Get workgroup for AI service agent"
+      operationId: "loadWorkgroupPost"
+      parameters:
+      - name: "id"
+        type: "string"
+        in: "header"
+        required: true
+      - name: "defaultAppID"
+        type: "string"
+        in: "header"
+        required: true
+      responses:
+        "200":
+          description: "The workgroup payload for workgroup members. A workgroup payload is returned  with list of group members, and conversation or chat history of workgroup."
+        "404":
+          description: "No resource found for workgroup on Researcher Hub. Error message with status code 404 is returned."
+        "500":
+          description: "Internal error occured. Error message with status code 500 is returned."
+        "400":
+          description: "Unexpected error occured. Error message with status code 400 is returned."
+      x-swagger-router-controller: "gss"
+  /v1/gss/load-members-profile:
+    post:
+      summary: "Get member's profile and voting preferences of AI service agent"
+      operationId: "loadMembersProfilePost"
+      parameters:
+      - name: "id"
+        type: "string"
+        in: "header"
+        required: true
+      responses:
+        "200":
+          description: "An individual member's payload. A workgroup member payload is returned with name, email, slackname, researchgate, avatar, and default app id.  A status code 200 is returned."
+        "404":
+          description: "No resource found for individual member on Researcher Hub. Error message with status code 404 is returned."
+        "500":
+          description: "Internal error occured. Error message with status code 500 is returned."
+        "400":
+          description: "Unexpected error occured. Error message with status code 400 is returned."
+      x-swagger-router-controller: "gss"
+  /v1/gss/execute-logout:
+    post:
+      summary: "Load logout payload as group member for existing AI service agent"
+      operationId: "executeLogoutPost"
+      parameters: []
+      responses:
+        "200":
+          description: "Success message to logout from Researcher Hub. A standard OK message  with a status code 200 is returned."
+        "404":
+          description: "No HTTP resource found for user logout process from Researcher Hub. Error message with status code 404 is returned."
+        "500":
+          description: "Error for internal error during user logout process. Error message is returned with status code 500."
+        "400":
+          description: "Error for unexpected error during user logout process. Error message is returned with status code 400."
+      x-swagger-router-controller: "gss"
+definitions: {}

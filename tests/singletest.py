@@ -8,7 +8,8 @@ from pprint import pprint
 # create an instance of the API class
 configuration = Configuration()
 host_container = "localhost"
-server_port = "4042"
+server_port = "9504"
+server_port_mock = "4042"
 namespace = '/v1/gss'
 configuration.host = 'http://' + host_container + ':' + server_port + '' + namespace
 api_instance = workgroup_assistant_api_client.DefaultApi(workgroup_assistant_api_client.ApiClient(configuration))
