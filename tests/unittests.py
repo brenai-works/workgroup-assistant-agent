@@ -8,7 +8,8 @@ import warnings
 class TestDefaultApi(unittest.TestCase):
     def setUp(self):
         docker_container = "localhost"
-        server_port = "4042"
+        server_port = "9504"
+        server_port_mock = "4042"
         namespace = '/v1/gss'
         self.api_instance =  workgroup_assistant_api_client.api.default_api.DefaultApi()
         self.api_instance.api_client.configuration.host = 'http://' + docker_container + ':' + server_port + '' + namespace
