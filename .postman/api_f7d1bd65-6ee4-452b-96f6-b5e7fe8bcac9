@@ -8,14 +8,15 @@ id = f7d1bd65-6ee4-452b-96f6-b5e7fe8bcac9
 [config.relations]
 
 [config.relations.collections]
-rootDirectory = postman/collections
+rootDirectory = openapi
 
 [config.relations.collections.metaData]
 
 [config.relations.apiDefinition]
-files[] = {"path":"gss.yaml","metaData":{}}
-files[] = {"path":"swagger-gss.yaml","metaData":{}}
+files[] = {"path":"openapi/gss.yaml","metaData":{}}
+files[] = {"path":"openapi/swagger-gss.yaml","metaData":{}}
+files[] = {"path":"openapi/swagger-spec.yaml","metaData":{}}
 
 [config.relations.apiDefinition.metaData]
-type = openapi:3
-rootFiles[] = gss.yaml
+type = openapi:2
+rootFiles[] = openapi/swagger-spec.yaml
