@@ -10,14 +10,17 @@ paths:
       summary: "Load sign-up application payload as group member for new AI service agent"
       operationId: "loadSignupPost"
       parameters:
-      - name: "id"
-        type: "integer"
-        in: "header"
-        required: true
-      - name: "inviteremail"
-        type: "string"
-        in: "header"
-        required: false
+        - in: body
+          name: requestBody
+          schema:
+            type: object
+            required:
+              - id
+            properties:    
+              id:
+                type: "integer"
+              inviteremail:
+                type: "string"
       responses:
         "200":
           description: "The sign-up payload for workgroup members. The signup payload is returned which includes avatar, name, email, password, slackname, researchgate url, default app id, and default app description. A status code 200 is returned."
@@ -33,38 +36,36 @@ paths:
       summary: "Commit a new sign-up application payload for group member with new AI service agent onto Researcher Hub"
       operationId: "executeSignupPost"
       parameters:
-      - name: "avatar"
-        type: "string"
-        in: "header"
-        required: true
-      - name: "name"
-        type: "string"
-        in: "header"
-        required: true
-      - name: "email"
-        type: "string"
-        in: "header"
-        required: true
-      - name: "password"
-        type: "string"
-        in: "header"
-        required: true
-      - name: "slackname"
-        type: "string"
-        in: "header"
-        required: true
-      - name: "researchgate"
-        type: "string"
-        in: "header"
-        required: true
-      - name: "defaultAppID"
-        type: "string"
-        in: "header"
-        required: true
-      - name: "defaultAppDescription"
-        type: "string"
-        in: "header"
-        required: true
+        - in: body
+          name: requestBody
+          schema:
+            type: object
+            required:
+              - avatar
+              - name
+              - email
+              - password
+              - slackname
+              - researchgate
+              - defaultAppID
+              - defaultAppDescription
+            properties:
+              avatar:
+                type: "string"
+              name:
+                type: "string"
+              email:
+                type: "string"
+              password:
+                type: "string"
+              slackname:
+                type: "string"
+              researchgate:
+                type: "string"
+              defaultAppID:
+                type: "string"
+              defaultAppDescription:
+                type: "string"
       responses:
         "200":
           description: "The credential of group member with existing AI service agent. A standard OK message with  status code 200 is return."
@@ -80,22 +81,24 @@ paths:
       summary: "Load login payload as group member for existing AI service agent"
       operationId: "loadLoginPost"
       parameters:
-      - name: "id"
-        type: "string"
-        in: "header"
-        required: true
-      - name: "inviteremail"
-        type: "string"
-        in: "header"
-        required: false
-      - name: "inviterDefaultAppId"
-        type: "string"
-        in: "header"
-        required: false
-      - name: "inviterUserRole"
-        type: "string"
-        in: "header"
-        required: false
+        - in: body
+          name: requestBody
+          schema:
+            type: object
+            required:
+              - id
+              - inviteremail
+              - inviterDefaultAppId
+              - inviterUserRole
+            properties:       
+              id:
+                type: "string"
+              inviteremail:
+                type: "string"
+              inviterDefaultAppId:
+                type: "string"
+              inviterUserRole:
+                type: "string"
       responses:
         "200":
           description: "The login payload for workgroup member. A login payload is returned include with username and password. A status code 200 is also returned."
@@ -111,22 +114,24 @@ paths:
       summary: "Submit a login with user credential payload for group member with existing AI service agent"
       operationId: "executeLoginPost"
       parameters:
-      - name: "name"
-        type: "string"
-        in: "header"
-        required: true
-      - name: "password"
-        type: "string"
-        in: "header"
-        required: true
-      - name: "inviterDefaultAppId"
-        type: "string"
-        in: "header"
-        required: false
-      - name: "inviterUserRole"
-        type: "string"
-        in: "header"
-        required: false
+        - in: body
+          name: requestBody
+          schema:
+            type: object
+            required:
+              - name
+              - password
+              - inviterDefaultAppId
+              - inviterUserRole
+            properties:       
+              name:
+                type: "string"
+              password:
+                type: "string"
+              inviterDefaultAppId:
+                type: "string"
+              inviterUserRole:
+                type: "string"
       responses:
         "200":
           description: "The workgroup and member's profile on Researcher Hub. A standard OK message is returned with a status code 200."
@@ -142,14 +147,18 @@ paths:
       summary: "Get workgroup for AI service agent"
       operationId: "loadWorkgroupPost"
       parameters:
-      - name: "id"
-        type: "string"
-        in: "header"
-        required: true
-      - name: "defaultAppID"
-        type: "string"
-        in: "header"
-        required: true
+        - in: body
+          name: requestBody
+          schema:
+            type: object
+            required:
+              - id
+              - defaultAppID
+            properties:             
+              id:
+                type: "string"
+              defaultAppID:
+                type: "string"
       responses:
         "200":
           description: "The workgroup payload for workgroup members. A workgroup payload is returned  with list of group members, and conversation or chat history of workgroup."
@@ -165,10 +174,15 @@ paths:
       summary: "Get member's profile and voting preferences of AI service agent"
       operationId: "loadMembersProfilePost"
       parameters:
-      - name: "id"
-        type: "string"
-        in: "header"
-        required: true
+        - in: body
+          name: requestBody
+          schema:
+            type: object
+            required:
+              - id
+            properties: 
+              id:
+                type: "string"
       responses:
         "200":
           description: "An individual member's payload. A workgroup member payload is returned with name, email, slackname, researchgate, avatar, and default app id.  A status code 200 is returned."
