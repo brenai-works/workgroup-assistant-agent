@@ -19,4 +19,4 @@ files[] = {"path":"openapi/swagger-spec.yaml","metaData":{}}
 
 [config.relations.apiDefinition.metaData]
 type = openapi:2
-rootFiles[] = openapi/swagger-spec.yaml
+rootFiles[] = openapi/swagger-gss.yaml
