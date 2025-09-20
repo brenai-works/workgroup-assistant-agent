@@ -35,21 +35,6 @@ paths:
     "/load-signup":
         post:
             summary: Load sign-up application payload as group member for new AI service agent
-            parameters:
-                - name: id
-                  in: header
-                  required: true
-                  schema:
-                    type: integer
-                    format: int32
-                    minimum: 0
-                    maximum: 5000000
-                - name: inviteremail
-                  in: header
-                  required: false
-                  schema:
-                    type: string
-                    format: email
             requestBody:
                 required: true
                 content:
@@ -110,59 +95,6 @@ paths:
     "/execute-signup":
         post:
             summary: Commit a new sign-up application payload for group member with new AI service agent onto Researcher Hub
-            parameters:
-                - name: avatar
-                  in: header
-                  required: true
-                  schema:
-                    type: string
-                    enum:
-                        - robotPurple.png
-                        - robotGreen.png
-                        - robotOrange.png
-                        - robotRed.png
-                - name: name
-                  in: header
-                  required: true
-                  schema:
-                    type: string
-                    maxLength: 256
-                - name: email
-                  in: header
-                  required: true
-                  schema:
-                    type: string
-                    format: email
-                - name: password
-                  in: header
-                  required: true
-                  schema:
-                    type: string
-                    maxLength: 256
-                - name: slackname
-                  in: header
-                  required: true
-                  schema:
-                    type: string
-                    maxLength: 256
-                - name: researchgate
-                  in: header
-                  required: true
-                  schema:
-                    type: string
-                    maxLength: 256
-                - name: defaultAppID
-                  in: header
-                  required: true
-                  schema:
-                    type: string
-                    maxLength: 500
-                - name: defaultAppDescription
-                  in: header
-                  required: true
-                  schema:
-                    type: string
-                    maxLength: 500
             requestBody:
                 required: true
                 content:
@@ -222,35 +154,6 @@ paths:
     "/load-login":
         post:
             summary: Load login payload as group member for existing AI service agent
-            parameters:
-                - name: id
-                  in: header
-                  required: true
-                  schema:
-                    type: integer
-                    format: int32
-                    minimum: 0
-                    maximum: 5000000
-                - name: inviteremail
-                  in: header
-                  required: false
-                  schema:
-                    type: string
-                    format: email
-                - name: inviterDefaultAppId
-                  in: header
-                  required: false
-                  schema:
-                    type: string
-                    maxLength: 500
-                - name: inviterUserRole
-                  in: header
-                  required: false
-                  schema:
-                    type: string
-                    enum:
-                        - Leader
-                        - Assistant
             requestBody:
                 required: true
                 content:
@@ -310,33 +213,6 @@ paths:
     "/execute-login":
         post:
             summary: Submit a login with user credential payload for group member with existing AI service agent
-            parameters:
-                - name: name
-                  in: header
-                  required: true
-                  schema:
-                    type: string
-                    maxLength: 256
-                - name: password
-                  in: header
-                  required: true
-                  schema:
-                    type: string
-                    maxLength: 256
-                - name: inviterDefaultAppId
-                  in: header
-                  required: false
-                  schema:
-                    type: string
-                    maxLength: 500
-                - name: inviterUserRole
-                  in: header
-                  required: false
-                  schema:
-                    type: string
-                    enum:
-                        - Leader
-                        - Assistant
             requestBody:
                 required: true
                 content:
@@ -396,21 +272,6 @@ paths:
     "/load-workgroup":
         post:
             summary: Get workgroup for AI service agent
-            parameters:
-                - name: id
-                  in: header
-                  required: true
-                  schema:
-                    type: integer
-                    format: int32
-                    minimum: 0
-                    maximum: 5000000
-                - name: defaultAppID
-                  in: header
-                  required: true
-                  schema:
-                    type: string
-                    maxLength: 500
             requestBody:
                 required: true
                 content:
@@ -470,15 +331,6 @@ paths:
     "/load-members-profile":
         post:
             summary: Get member's profile and voting preferences of AI service agent
-            parameters:
-                - name: id
-                  in: header
-                  required: true
-                  schema:
-                    type: integer
-                    format: int32
-                    minimum: 0
-                    maximum: 5000000
             requestBody:
                 required: true
                 content:
